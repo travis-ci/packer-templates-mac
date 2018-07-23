@@ -3,3 +3,5 @@ packer_cache/
 
 # For built boxes
 *.box
+
+.build/
