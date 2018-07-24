@@ -6,4 +6,4 @@ DEST="packer@image-builder.macstadium-us-se-1.travisci.net"
 rsync -avz --exclude='.git' --exclude='.env*' ./ $DEST:/home/packer/packer-templates
 
 # Start the build
-ssh -t $DEST bin/build-macos make ci-macos "$@"
+ssh -t $DEST bin/build-macos rake "$(printf '%q ' "$@")"
