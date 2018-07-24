@@ -22,6 +22,7 @@ FileList['templates/*.yml'].each do |template|
 
   desc "Run a packer build for '#{name}'"
   task name => generated do
+    sh 'bin/assert-host'
     sh "packer build #{generated}"
   end
 end
