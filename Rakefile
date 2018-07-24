@@ -6,6 +6,9 @@ require 'rake/clean'
 directory '.build/templates'
 CLOBBER << '.build'
 
+desc 'Validate all Packer templates'
+task :validate
+
 # Generate tasks to build any Packer templates we define
 FileList['templates/*.yml'].each do |template|
   name = File.basename(template, '.yml')
@@ -25,6 +28,20 @@ FileList['templates/*.yml'].each do |template|
     sh 'bin/assert-host'
     sh "packer build #{generated}"
   end
+
+  namespace name do
+    desc "Validate the template for '#{name}'"
+    task validate: [generated] do
+      sh "packer validate #{generated}"
+    end
+  end
+
+  task validate: "#{name}:validate"
 end
 
-task default: :base_vm
+desc 'Run checks against scripts and templates'
+task :default do
+  sh "git grep -l '^#!/bin/bash' | xargs shellcheck"
+  sh "git grep -l '^#!/bin/bash' | xargs shfmt -i 2 -w"
+  Rake::Task[:validate].invoke
+end

@@ -15,6 +15,6 @@ vsphere-images checkout-host \
   --vsphere-insecure-skip-verify \
   --dry-run \
   --dest-pool=/pod-1/host/packer_image_dev || {
-    echo "error: no host is checked out to packer_image_dev. Please run bin/checkout-host to resolve this." >&2
-    exit 1
-  }
+  echo "error: no host is checked out to packer_image_dev. Please run bin/checkout-host to resolve this." >&2
+  exit 1
+}
