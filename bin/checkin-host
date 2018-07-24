@@ -2,7 +2,7 @@
 
 set -o errexit
 
-if [[ -z "$(which vsphere-images)" ]]; then
+if ! command -v vsphere-images >/dev/null 2>&1; then
   echo "Could not find vsphere-images tool in PATH. Exiting." >&2
   exit 1
 fi

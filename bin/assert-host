@@ -2,7 +2,7 @@
 
 set -o errexit
 
-if [[ -z "$(which vsphere-images)" ]]; then
+if ! command -v vsphere-images >/dev/null 2>&1; then
   echo "Could not find vsphere-images tool in PATH. Exiting." >&2
   exit 1
 fi
@@ -15,6 +15,6 @@ vsphere-images checkout-host \
   --vsphere-insecure-skip-verify \
   --dry-run \
   --dest-pool=/pod-1/host/packer_image_dev || {
-    echo "error: no host is checked out to packer_image_dev. Please run bin/checkout-host-macos to resolve this." >&2
+    echo "error: no host is checked out to packer_image_dev. Please run bin/checkout-host to resolve this." >&2
     exit 1
   }
