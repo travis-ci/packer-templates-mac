@@ -1,7 +1,10 @@
 sudo: true
 language: ruby
 before_script:
-- curl https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.0/packer-builder-vsphere-clone.linux -o packer-builder-vsphere-clone.linux
+- curl https://releases.hashicorp.com/packer/1.2.5/packer_1.2.5_linux_amd64.zip -o /tmp/packer.zip
+- sudo unzip -o -d /usr/local/bin /tmp/packer.zip
+- sudo chmod +x ~/bin/packer
+- sudo curl https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.0/packer-builder-vsphere-clone.linux -o /usr/local/bin/packer-builder-vsphere-clone.linux
 script:
 - rake
 
