@@ -1,5 +1,7 @@
 sudo: true
 language: ruby
+before_script:
+- curl https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.0/packer-builder-vsphere-clone.linux -o packer-builder-vsphere-clone.linux
 script:
 - rake
 
