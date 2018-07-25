@@ -4,6 +4,7 @@ require 'yaml'
 require 'rake/clean'
 
 directory '.build/templates'
+directory '.build/variables'
 CLOBBER << '.build'
 
 desc 'Validate all Packer templates'
@@ -13,6 +14,7 @@ task :validate
 FileList['templates/*.yml'].each do |template|
   name = File.basename(template, '.yml')
   generated = ".build/templates/#{name}.json"
+  variables = ".build/variables/#{name}.json"
 
   CLEAN << generated
 
@@ -23,10 +25,16 @@ FileList['templates/*.yml'].each do |template|
     end
   end
 
+  # Use task here instead of file so that this task always runs
+  task variables, %i[xcode] => ['.build/variables'] do |t, args|
+    vars = { xcode_version: args.xcode }
+    File.write t.name, JSON.pretty_generate(vars)
+  end
+
   desc "Run a packer build for '#{name}'"
-  task name => generated do
+  task name, %i[xcode] => [generated, variables] do
     sh 'bin/assert-host'
-    sh "packer build #{generated}"
+    sh "packer build -var-file #{variables} #{generated}"
   end
 
   namespace name do
