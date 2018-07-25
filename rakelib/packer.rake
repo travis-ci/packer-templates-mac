@@ -24,13 +24,21 @@ FileList['templates/*.yml'].each do |template|
   end
 
   # Use task here instead of file so that this task always runs
-  task variables, %i[xcode] => ['.build/variables'] do |t, args|
-    vars = { xcode_version: args.xcode }
+  task variables, %i[vanilla_vm xcode] => ['.build/variables'] do |t, args|
+    vanilla_vm = VANILLA_VMS[args.vanilla_vm.to_s]
+    macos_version = vanilla_vm['version']
+    image_name = "travis-ci-macos-#{macos_version}-xcode#{args.xcode}-{{ timestamp }}"
+    vars = {
+      xcode_version: args.xcode,
+      template_image_name: vanilla_vm['name'],
+      dirty_image_name: "#{image_name}-dirty",
+      final_image_name: image_name
+    }
     File.write t.name, JSON.pretty_generate(vars)
   end
 
   desc "Run a packer build for '#{name}'"
-  task name, %i[xcode] => [generated, variables] do
+  task name, %i[vanilla_vm xcode] => [generated, variables] do
     sh 'bin/assert-host'
     sh "packer build -var-file #{variables} #{generated}"
   end
@@ -38,7 +46,8 @@ FileList['templates/*.yml'].each do |template|
   namespace name do
     desc "Validate the template for '#{name}'"
     task validate: [generated] do
-      sh "packer validate -var-file .test_variables.json #{generated}"
+      Rake::Task[variables].invoke('10.13', '9.4.1')
+      sh "packer validate -var-file .test_variables.json -var-file #{variables} #{generated}"
     end
   end
 

@@ -1,7 +1,9 @@
 ---
 description: Travis CI macOS build env template
 variables:
-  image_name: travis-ci-macos-10.13-{{ timestamp }}-<%= git_desc %>
+  template_image_name: null
+  dirty_image_name: null
+  final_image_name: null
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
   vcenter_user: "{{ env `VCENTER_USER` }}"
@@ -23,8 +25,8 @@ builders:
   host: "packer_image_dev"
   datastore: "DataCore1_1"
   folder: "In Progress Base VMs"
-  template: "travis-ci-macos10.13-xcode9.4-vanilla-large"
-  vm_name: "{{ user `image_name` }}"
+  template: "{{ user `template_image_name` }}"
+  vm_name: "{{ user `dirty_image_name` }}"
   CPUs: 12             # will be changed later when finalized
   CPU_reservation: 0
   CPU_limit: 99999
@@ -50,7 +52,7 @@ provisioners:
 post-processors:
 - type: shell-local
   environment_vars:
-  - IMAGE_NAME={{ user `image_name` }}
-  - FINAL_IMAGE_NAME=travis-ci-macos-10.13-xcode{{ user `xcode_version` }}-{{ timestamp }}
+  - DIRTY_IMAGE_NAME={{ user `dirty_image_name` }}
+  - FINAL_IMAGE_NAME={{ user `final_image_name` }}
   inline:
-  - bin/finalize-image "$IMAGE_NAME" "$FINAL_IMAGE_NAME"
+  - bin/finalize-image "$DIRTY_IMAGE_NAME" "$FINAL_IMAGE_NAME"
