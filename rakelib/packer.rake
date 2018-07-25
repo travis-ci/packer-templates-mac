@@ -27,7 +27,8 @@ FileList['templates/*.yml'].each do |template|
   task variables, %i[vanilla_vm xcode] => ['.build/variables'] do |t, args|
     vanilla_vm = VANILLA_VMS[args.vanilla_vm.to_s]
     macos_version = vanilla_vm['version']
-    image_name = "travis-ci-macos-#{macos_version}-xcode#{args.xcode}-{{ timestamp }}"
+    timestamp = Time.now.to_i
+    image_name = "travis-ci-macos#{macos_version}-xcode#{args.xcode}-#{timestamp}"
     vars = {
       xcode_version: args.xcode,
       template_image_name: vanilla_vm['name'],
