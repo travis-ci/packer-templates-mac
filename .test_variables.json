@@ -1,0 +1,5 @@
+{
+  "vcenter_server": "example.com",
+  "vcenter_user": "example",
+  "vcenter_password": "password"
+}

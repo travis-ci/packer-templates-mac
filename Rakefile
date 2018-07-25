@@ -32,7 +32,7 @@ FileList['templates/*.yml'].each do |template|
   namespace name do
     desc "Validate the template for '#{name}'"
     task validate: [generated] do
-      sh "packer validate #{generated}"
+      sh "packer validate -var-file .test_variables.json #{generated}"
     end
   end
 
