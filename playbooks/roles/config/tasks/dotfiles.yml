@@ -1,0 +1,20 @@
+- name: Copy .bashrc
+  copy:
+    src: bashrc
+    dest: /Users/travis/.bashrc
+    mode: 0644
+    owner: travis
+
+- name: Copy .profile
+  copy:
+    src: profile
+    dest: /Users/travis/.profile
+    mode: 0644
+    owner: travis
+
+- name: Copy .bash_profile
+  copy:
+    src: bash_profile
+    dest: /Users/travis/.bash_profile
+    mode: 0644
+    owner: travis

@@ -1,0 +1,22 @@
+---
+- hosts: builders
+  remote_user: travis
+  roles:
+  - role: config
+    tags: [config]
+  - role: ssh
+    tags: [ssh]
+  - role: xcode
+    tags: [xcode]
+  - role: homebrew
+    tags: [homebrew]
+  - role: ruby
+    tags: [ruby]
+  - role: cocoapods
+    tags: [cocoapods]
+  - role: node
+    tags: [node]
+  - role: travis
+    tags: [travis]
+  - role: cleanup
+    tags: [cleanup]

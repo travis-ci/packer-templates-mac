@@ -1,0 +1,36 @@
+- name: Copy runner.rb file
+  copy:
+    src: runner.rb
+    dest: /Users/travis/runner.rb
+    mode: 0755
+    owner: travis
+
+- name: Create runner output file
+  file:
+    state: touch
+    path: /Users/travis/runner.rb.out
+    owner: travis
+    mode: 0644
+
+- name: Create runner error file
+  file:
+    state: touch
+    path: /Users/travis/runner.rb.err
+    owner: travis
+    mode: 0644
+
+- name: Create launch agents directory
+  file:
+    state: directory
+    path: /Users/travis/Library/LaunchAgents
+    owner: travis
+
+- name: Copy runner launch agent
+  copy:
+    src: com.travis-ci.runner.plist
+    dest: /Users/travis/Library/LaunchAgents/com.travis-ci.runner.plist
+    owner: travis
+    mode: 0644
+
+- name: Load runner launchd job
+  command: launchctl load /Users/travis/Library/LaunchAgents/com.travis-ci.runner.plist

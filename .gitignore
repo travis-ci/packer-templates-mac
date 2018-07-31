@@ -6,3 +6,5 @@ packer_cache/
 
 .build/
 .envrc
+*.retry
+secrets.yml

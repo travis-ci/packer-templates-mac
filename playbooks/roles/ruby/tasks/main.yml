@@ -1,0 +1,5 @@
+- name: Install RVM
+  import_tasks: rvm.yml
+
+- name: Install rubies
+  import_tasks: rubies.yml

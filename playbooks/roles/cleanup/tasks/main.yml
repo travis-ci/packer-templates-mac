@@ -1,0 +1,12 @@
+- name: Delete bash history
+  file:
+    state: absent
+    path: /Users/travis/{{ item }}
+  loop:
+  - .bash_history
+  - .bash_sessions
+
+- name: Empty trash
+  file:
+    state: absent
+    path: /Users/travis/.Trash
