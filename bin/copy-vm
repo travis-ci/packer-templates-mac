@@ -1,0 +1,85 @@
+#!/bin/bash
+
+set -o errexit
+
+if ! command -v vsphere-images >/dev/null 2>&1; then
+  echo "Could not find vsphere-images tool in PATH. Exiting." >&2
+  exit 1
+fi
+
+if [[ "$#" -ne 2 ]]; then
+  echo "Expected 2 arguments, got $#." >&2
+  echo "Usage: bin/copy-vm <image path> <destination pod>" >&2
+  echo "" >&2
+  echo "Example: bin/copy-vm \"Base VMs/travis-ci-macos10.12-xcode8.3-1507738863\" pod-2" >&2
+  exit 1
+fi
+
+VM="$1"
+DESTINATION_POD="$2"
+
+ENCODED_USER=$(python -c "import urllib; print urllib.quote('''$VCENTER_USER''')")
+POD_1_URL="https://${ENCODED_USER}:${VCENTER_PASSWORD}@${VCENTER_SERVER}/sdk"
+POD_2_URL="https://${ENCODED_USER}:${VCENTER_SECONDARY_PASSWORD}@${VCENTER_SECONDARY_SERVER}/sdk"
+
+if [[ $DESTINATION_POD == *1* ]]; then
+  SOURCE_DATACENTER="pod-2"
+  SOURCE_URL="$POD_2_URL"
+  DESTINATION_DATACENTER="pod-1"
+  DESTINATION_URL="$POD_1_URL"
+  DESTINATION_POOL="MacPro_Pod_1"
+  DESTINATION_HOST="10.88.242.11"
+  DESTINATION_NETWORK="Jobs-1"
+  DATASTORE="DataCore1_1"
+elif [[ $DESTINATION_POD == *2* ]]; then
+  SOURCE_DATACENTER="pod-1"
+  SOURCE_URL="$POD_1_URL"
+  DESTINATION_DATACENTER="pod-2"
+  DESTINATION_URL="$POD_2_URL"
+  DESTINATION_POOL="MacPro_Pod_2"
+  DESTINATION_HOST="10.88.242.51"
+  DESTINATION_NETWORK="Jobs-2"
+  DATASTORE="DataCore1_3"
+else
+  echo "error: Invalid destination pod '$DESTINATION_POD'. Valid options: pod-1, pod-2." >&2
+  exit 1
+fi
+
+echo
+echo "Planned actions:"
+echo
+echo "* Clone VM at '$VM'"
+echo "    from original datacenter '$SOURCE_DATACENTER'"
+echo "    to target datacenter '$DESTINATION_DATACENTER'"
+echo "    in datastore '$DATASTORE'"
+echo "    in resource pool '$DESTINATION_POOL'"
+echo "    on network '$DESTINATION_NETWORK'"
+echo
+echo "* After cloning, a 'base' snapshot for '$VM' will be created in '$DESTINATION_DATACENTER'"
+echo
+
+while true; do
+  read -r -p "Do you want to copy the VM? " yn
+  case $yn in
+    [Yy]* ) break;;
+    [Nn]* ) exit 1;;
+    * ) echo "Please answer yes or no.";;
+  esac
+done
+
+vsphere-images copy-image \
+  --src-url="$SOURCE_URL" \
+  --dest-url="$DESTINATION_URL" \
+  --src-insecure-skip-verify \
+  --dest-insecure-skip-verify \
+  --dest-datastore-path="/$DESTINATION_DATACENTER/datastore/$DATASTORE" \
+  --dest-pool-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL" \
+  --dest-host-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL/$DESTINATION_HOST" \
+  --dest-network-name="/$DESTINATION_DATACENTER/network/$DESTINATION_NETWORK" \
+  "/$SOURCE_DATACENTER/vm/$VM" \
+  "/$DESTINATION_DATACENTER/vm/$VM"
+
+vsphere-images resnapshot \
+  --vsphere-url="$DESTINATION_URL" \
+  --vsphere-insecure-skip-verify \
+  "/$DESTINATION_DATACENTER/vm/$VM"
