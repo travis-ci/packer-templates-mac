@@ -1,7 +1,7 @@
 ---
 - import_playbook: site.yml
   vars:
-    xcode_version: '10'
+    xcode_version: '10.0'
     nvm_version: v0.33.2
     node_versions: ['6', '5', '4']
     rubies: [2.4.3, 2.3.5]

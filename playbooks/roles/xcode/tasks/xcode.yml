@@ -7,18 +7,9 @@
     executable: /usr/bin/gem
   become: true
 
-- name: Check if Xcode {{ xcode_version }} is installed
-  shell: "/usr/local/bin/xcversion installed | grep -F 'Xcode-{{ xcode_version }}'"
-  register: xcode_installed
-  ignore_errors: true
-  changed_when: false
-  environment:
-    GEM_HOME: "{{ system_gem_dir }}"
-    GEM_PATH: "{{ system_gem_dir }}"
-
 - name: Install Xcode {{ xcode_version }}
-  shell: "/usr/local/bin/xcversion install {{ xcode_version }}"
-  when: xcode_installed.rc != 0
+  xcode:
+    version: "{{ xcode_version }}"
   environment:
     GEM_HOME: "{{ system_gem_dir }}"
     GEM_PATH: "{{ system_gem_dir }}"
