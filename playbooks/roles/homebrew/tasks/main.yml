@@ -14,3 +14,12 @@
   homebrew:
     name: "{{ homebrew_packages }}"
     update_homebrew: true
+
+- name: Gather installed versions of packages
+  command: /usr/local/bin/brew ls --versions
+  register: brew_versions
+
+- name: Write installed packages to file
+  copy:
+    content: "{{ brew_versions.stdout }}"
+    dest: /tmp/brew_packages

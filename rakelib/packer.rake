@@ -4,6 +4,10 @@ require 'yaml'
 directory '.build/templates'
 CLOBBER << '.build'
 
+# Records are meant to be persistent and committed.
+# They are an artifact of the build that we wish to hold on to.
+directory 'records'
+
 desc 'Validate all Packer templates'
 task :validate
 
@@ -22,8 +26,10 @@ FileList['templates/*.yml'].each do |template|
     end
   end
 
+  directory "records/#{name}"
+
   desc "Run a packer build for '#{name}'"
-  task name => [generated] do
+  task name => [generated, "records/#{name}"] do
     sh 'bin/assert-host'
     sh "packer build #{generated}"
   end

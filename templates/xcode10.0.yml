@@ -1,6 +1,7 @@
 ---
 description: Travis CI Xcode 10.0 Build VM
 variables:
+  name: xcode10.0
   template_image_name: travis-ci-macos10.13-xcode9.4-vanilla-large
   dirty_image_name: travis-ci-macos10.13-xcode10beta5-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.13-xcode10beta5-{{ timestamp }}
@@ -44,11 +45,15 @@ provisioners:
   - /usr/local/bin/brew install ansible
 - type: ansible-local
   playbook_dir: playbooks
-  playbook_file: playbooks/xcode10.0.yml
+  playbook_file: playbooks/{{ user `name` }}.yml
   inventory_groups: builders
   extra_arguments:
   - --extra-vars "xcode_install_user={{ user `xcode_install_user` }} xcode_install_password={{ user `xcode_install_password` }}"
   command: ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 /usr/local/bin/ansible-playbook
+- type: file
+  direction: download
+  source: /tmp/brew_packages
+  destination: records/{{ user `name` }}/brew_packages
 post-processors:
 - type: shell-local
   environment_vars:
