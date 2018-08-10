@@ -13,6 +13,7 @@ task :validate
 
 # Generate tasks to build any Packer templates we define
 FileList['templates/*.yml'].each do |template|
+  template_data = YAML.safe_load(File.read(template))
   name = File.basename(template, '.yml')
   next if name == 'base_vm'
   generated = ".build/templates/#{name}.json"
@@ -21,8 +22,7 @@ FileList['templates/*.yml'].each do |template|
 
   file generated => ['.build/templates', template] do |t|
     open t.name, 'w' do |f|
-      template = YAML.safe_load(File.read(template))
-      f.write JSON.pretty_generate(template)
+      f.write JSON.pretty_generate(template_data)
     end
   end
 
@@ -30,7 +30,10 @@ FileList['templates/*.yml'].each do |template|
 
   desc "Run a packer build for '#{name}'"
   remote_task name => [generated, "records/#{name}"] do
-    sh 'bin/assert-host'
+    uses_dedicated_host = template_data['builders'].any? do |b|
+      b['host'] == 'packer_image_dev'
+    end
+    sh 'bin/assert-host' if uses_dedicated_host
     sh "packer build #{generated}"
   end
 

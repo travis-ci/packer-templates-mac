@@ -1,0 +1,29 @@
+- name: add ssh-user group
+  group:
+    name: ssh-user
+  become: true
+
+- name: remove existing ssh host keys
+  file:
+    path: /etc/ssh/ssh_host_{{ item }}_key
+    state: absent
+  loop:
+  - rsa
+  - ed25519
+  become: true
+
+- name: generate new ed25519 key
+  shell: "ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key < /dev/null"
+  become: true
+
+- name: generate new rsa key
+  shell: "ssh-keygen -t rsa -b 4096 -f /etc/ssh/ssh_host_rsa_key < /dev/null"
+  become: true
+
+- name: copy sshd configuration
+  copy:
+    src: etc_ssh_sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+  become: true

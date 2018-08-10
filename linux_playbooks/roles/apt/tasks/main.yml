@@ -1,0 +1,10 @@
+- name: update apt packages
+  apt:
+    update_cache: true
+    upgrade: dist
+  become: true
+
+- name: install needed apt packages
+  apt:
+    name: apt-transport-https
+  become: true

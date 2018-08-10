@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  roles:
+  - apt
+  - vmware
+  - ssh
+  - users
+  - logging
+  - cleanup
