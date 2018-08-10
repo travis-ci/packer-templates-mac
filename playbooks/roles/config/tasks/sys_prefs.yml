@@ -1,0 +1,41 @@
+- name: Set time zone to GMT
+  command: systemsetup -settimezone GMT
+  become: true
+
+- name: Disable sleep
+  command: systemsetup -setsleep Off
+  become: true
+
+- name: Disable computer sleep
+  command: systemsetup -setcomputersleep Off
+  become: true
+
+- name: Disable display sleep
+  command: systemsetup -setdisplaysleep Off
+  become: true
+
+- name: Disable hard disk sleep
+  command: systemsetup -setharddisksleep Off
+  become: true
+
+- name: Allow remote login
+  command: systemsetup -setremotelogin on
+  become: true
+
+- name: Disable App Sleep
+  osx_defaults:
+    key: NSAppSleepDisabled
+    type: bool
+    value: YES
+
+- name: Disable screensaver password
+  osx_defaults:
+    host: currentHost
+    domain: com.apple.screensaver
+    key: askForPassword
+    type: bool
+    value: NO
+
+- name: Disable automatic software updates
+  command: softwareupdate --schedule off
+  become: true

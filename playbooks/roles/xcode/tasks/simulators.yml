@@ -1,0 +1,8 @@
+- name: Install all available simulator runtimes
+  xcode_simulator:
+    xcode: "{{ xcode_version }}"
+  environment:
+    GEM_HOME: "{{ system_gem_dir }}"
+    GEM_PATH: "{{ system_gem_dir }}"
+    XCODE_INSTALL_USER: "{{ xcode_install_user }}"
+    XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"

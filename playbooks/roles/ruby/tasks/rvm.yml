@@ -1,0 +1,43 @@
+- name: Install GnuPG
+  homebrew:
+    name: gpg
+
+- name: Check if RVM is already installed
+  stat:
+    path: "{{ rvm_binary }}"
+  register: rvm_installed
+
+- name: Copy RVM GPG key
+  copy:
+    src: rvm-gpg.key
+    dest: /tmp/rvm-gpg.key
+  when: rvm_installed.stat.exists == false
+
+- name: Import RVM GPG key
+  command: /usr/local/bin/gpg --import /tmp/rvm-gpg.key
+  when: rvm_installed.stat.exists == false
+
+- name: Import mpapis GPG key
+  shell: curl -sSL https://rvm.io/mpapis.asc | /usr/local/bin/gpg --import -
+  when: rvm_installed.stat.exists == false
+
+- name: Install RVM
+  shell: curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles
+  when: rvm_installed.stat.exists == false
+
+- name: Clean up RVM
+  shell: "{{ rvm_binary }} cleanup all"
+
+- name: Copy RVM config file
+  copy:
+    src: rvmrc
+    dest: /Users/travis/.rvmrc
+    mode: 0644
+    owner: travis
+
+- name: Copy RVM binary server configuration
+  copy:
+    src: rvm_user_db
+    dest: /Users/travis/.rvm/user/db
+    mode: 0644
+    owner: travis

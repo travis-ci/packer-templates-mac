@@ -1,0 +1,25 @@
+- name: Check if Homebrew is installed
+  stat: path=/usr/local/bin/brew
+  register: homebrew_installed
+
+- name: Install Homebrew
+  shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  when: homebrew_installed.stat.exists == false
+
+- name: Install Homebrew casks
+  homebrew_cask:
+    name: "{{ homebrew_casks }}"
+
+- name: Install Homebrew packages
+  homebrew:
+    name: "{{ homebrew_packages }}"
+    update_homebrew: true
+
+- name: Gather installed versions of packages
+  command: /usr/local/bin/brew ls --versions
+  register: brew_versions
+
+- name: Write installed packages to file
+  copy:
+    content: "{{ brew_versions.stdout }}"
+    dest: /tmp/brew_packages

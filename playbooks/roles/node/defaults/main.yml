@@ -1,0 +1,8 @@
+nvm_dir: /Users/travis/.nvm
+nvm_version: v0.33.11
+node_versions:
+- '10'
+- '8'
+- '6'
+- '5'
+- '4'

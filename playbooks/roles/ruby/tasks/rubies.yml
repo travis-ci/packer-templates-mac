@@ -1,0 +1,28 @@
+- name: "Workaround: Symlink libgdbm.dylib to make Ruby binaries happy"
+  file:
+    state: link
+    src: /usr/local/opt/gdbm/lib/libgdbm.dylib
+    dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
+
+- name: Install rubies
+  command: "{{ rvm_binary }} install {{ item }} --binary"
+  environment:
+    TRAVIS: 'true'
+  loop: "{{ rubies }}"
+
+- name: Set ruby {{ default_ruby }} as the default ruby version
+  command: "{{ rvm_binary }} alias create default {{ default_ruby }}"
+
+- name: Install global RubyGems
+  command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc --no-ri"
+  loop: "{{ global_rubygems }}"
+
+- name: Cleanup RubyGems
+  command: "{{ rvm_binary }} all do gem cleanup"
+
+- name: Copy .gemrc
+  copy:
+    src: gemrc
+    dest: /Users/travis/.gemrc
+    mode: 0644
+    owner: travis

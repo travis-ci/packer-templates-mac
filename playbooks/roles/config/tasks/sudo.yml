@@ -1,0 +1,6 @@
+- name: Enable passwordless sudo for travis
+  copy:
+    src: sudoers_travis
+    dest: /etc/sudoers.d/travis
+    mode: 0600
+  become: true

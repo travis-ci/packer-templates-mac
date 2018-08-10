@@ -1,0 +1,5 @@
+- name: Clone NVM repository
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: "{{ nvm_dir }}"
+    version: "{{ nvm_version }}"

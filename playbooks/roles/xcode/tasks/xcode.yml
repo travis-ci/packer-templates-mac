@@ -1,0 +1,17 @@
+- name: Install xcode-install gem
+  gem:
+    name: xcode-install
+    include_doc: false
+    user_install: false
+    state: latest
+    executable: /usr/bin/gem
+  become: true
+
+- name: Install Xcode {{ xcode_version }}
+  xcode:
+    version: "{{ xcode_version }}"
+  environment:
+    GEM_HOME: "{{ system_gem_dir }}"
+    GEM_PATH: "{{ system_gem_dir }}"
+    XCODE_INSTALL_USER: "{{ xcode_install_user }}"
+    XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"

@@ -1,0 +1,32 @@
+- name: Create /usr/local/travis
+  file:
+    state: directory
+    path: /usr/local/travis
+    owner: travis
+    recurse: true
+  become: true
+
+- name: Clone system-info
+  git:
+    repo: https://github.com/travis-ci/system-info.git
+    dest: /Users/travis/system-info
+
+- name: Install system-info dependencies
+  command: >
+    /Users/travis/.rvm/bin/rvm 2.3.5 do
+    bundle install --gemfile=/Users/travis/system-info/Gemfile
+
+- name: Create system-info report
+  command: >
+    /Users/travis/.rvm/bin/rvm 2.3.5 do
+    bundle exec /Users/travis/system-info/exe/system-info report
+    --formats human,json
+    --human-output /usr/local/travis/system_info
+    --json-output /usr/local/travis/system_info.json
+  environment:
+    BUNDLE_GEMFILE: /Users/travis/system-info/Gemfile
+
+- name: Remove system-info repo
+  file:
+    state: absent
+    path: /Users/travis/system-info

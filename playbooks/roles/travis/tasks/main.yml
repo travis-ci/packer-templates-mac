@@ -1,0 +1,5 @@
+- name: Setup Travis runner
+  import_tasks: runner.yml
+
+- name: Create system-info report
+  import_tasks: system_info.yml

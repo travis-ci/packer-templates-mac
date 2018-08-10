@@ -1,0 +1,12 @@
+rvm_binary: /Users/travis/.rvm/bin/rvm
+rubies:
+- 2.4.3
+- 2.3.5
+default_ruby: 2.4.3
+global_rubygems:
+- bundler
+- cocoapods
+- fastlane
+- nomad-cli
+- rake
+- xcpretty

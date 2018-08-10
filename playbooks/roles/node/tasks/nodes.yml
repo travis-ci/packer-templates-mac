@@ -1,0 +1,9 @@
+- name: Install Node.js versions
+  shell: |
+    source $NVM_DIR/nvm.sh
+    nvm install "{{ item }}"
+  args:
+    executable: /bin/bash
+  loop: "{{ node_versions }}"
+  environment:
+    NVM_DIR: "{{ nvm_dir }}"

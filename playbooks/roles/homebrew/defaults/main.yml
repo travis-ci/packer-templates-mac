@@ -1,0 +1,26 @@
+homebrew_packages:
+- carthage
+- cmake
+- coreutils
+- gdbm
+- git
+- go
+- gpg
+- gpg2
+- maven
+- md5deep
+- mercurial
+- node
+- postgis
+- postgresql
+- pyenv
+- python
+- sqlite
+- swiftlint
+- tmate
+- wget
+- xctool
+homebrew_casks:
+- java
+- oclint
+- xquartz

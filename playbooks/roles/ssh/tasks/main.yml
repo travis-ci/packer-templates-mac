@@ -1,0 +1,21 @@
+- name: Create SSH config directory
+  file:
+    state: directory
+    path: /Users/travis/.ssh
+    mode: 0700
+    owner: travis
+
+- name: Add Travis SSH key to authorized keys
+  copy:
+    src: travis_key.pub
+    dest: /Users/travis/.ssh/authorized_keys
+    mode: 0600
+    owner: travis
+
+- name: Configure SSH daemon
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: wheel
+  become: true

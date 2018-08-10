@@ -1,0 +1,4 @@
+- name: Set up CocoaPods
+  shell: "{{ rvm_binary }} {{ default_ruby }} do pod setup"
+  args:
+    executable: /bin/bash

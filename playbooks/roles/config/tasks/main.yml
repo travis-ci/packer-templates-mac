@@ -1,0 +1,8 @@
+- name: Configure sudoers
+  import_tasks: sudo.yml
+
+- name: Set up system preferences
+  import_tasks: sys_prefs.yml
+
+- name: Copy dotfiles
+  import_tasks: dotfiles.yml
