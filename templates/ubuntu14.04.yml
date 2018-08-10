@@ -61,3 +61,9 @@ provisioners:
 - type: ansible-local
   playbook_dir: linux_playbooks
   playbook_file: linux_playbooks/vanilla.yml
+post-processors:
+- type: shell-local
+  environment_vars:
+  - IMAGE_NAME={{ user `vm_name` }}
+  inline:
+  - bin/finalize-linux-image "$IMAGE_NAME"
