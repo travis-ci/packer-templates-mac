@@ -91,7 +91,7 @@ def main():
     xcversion_path = module.get_bin_path(
         'xcversion',
         required=True,
-        opt_dirs=p['path']
+        opt_dirs=[p['path']]
     )
 
     result = dict(changed=False)
