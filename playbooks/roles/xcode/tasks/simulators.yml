@@ -6,3 +6,12 @@
     GEM_PATH: "{{ system_gem_dir }}"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
+
+- name: Gather installed simulators
+  command: xcrun simctl list
+  register: simctl_list
+
+- name: Write available simulators to file
+  copy:
+    content: "{{ simctl_list.stdout }}"
+    dest: /tmp/simulators
