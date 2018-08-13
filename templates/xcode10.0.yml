@@ -3,8 +3,8 @@ description: Travis CI Xcode 10.0 Build VM
 variables:
   name: xcode10.0
   template_image_name: travis-ci-macos10.13-xcode9.4-vanilla-large
-  dirty_image_name: travis-ci-macos10.13-xcode10beta5-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.13-xcode10beta5-{{ timestamp }}
+  dirty_image_name: travis-ci-macos10.13-xcode10beta6-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.13-xcode10beta6-{{ timestamp }}
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
   vcenter_user: "{{ env `VCENTER_USER` }}"
