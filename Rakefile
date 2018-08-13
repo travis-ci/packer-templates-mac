@@ -27,7 +27,7 @@ def remote_task(*args, &block)
 
   namespace task_name do
     task :local do
-      exec 'bin/rake-remote', task_name
+      sh 'bin/rake-remote', task_name
     end
     task(:remote, arg_name_list => prereqs, &block)
   end
