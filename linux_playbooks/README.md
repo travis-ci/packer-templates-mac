@@ -13,7 +13,7 @@ The `site.yml` playbook runs only the `users` role. Run this playbook to ensure 
 
 When someone new joins the team:
 
-1. Add a new entry to the `users` key in `roles/users/defaults/main.yml`.
-2. `$ ansible-playbook -i linux_hosts site.yml`
+1. Add a new entry to the `users` key in the `travis-keychain` repository in `config/travis.macstadium-image-builder.yml`.
+2. `$ rake update_users`
 
 That's it! The new person should be able to ssh into any of the Linux boxes in MacStadium now.

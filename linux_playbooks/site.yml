@@ -2,4 +2,5 @@
 - hosts: all
   roles:
   - users
-  include_vars: secrets.yml
+  vars_files:
+  - secrets.yml
