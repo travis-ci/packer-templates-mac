@@ -68,6 +68,8 @@ class PackerTemplate
       sh 'bin/assert-host' if uses_dedicated_host?
       sh "packer build #{json_template}"
     end
+
+    task "#{name}:local" => [:secrets]
   end
 
   def define_validate_tasks
