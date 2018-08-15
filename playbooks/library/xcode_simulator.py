@@ -1,4 +1,7 @@
 from ansible.module_utils.basic import AnsibleModule
+import os
+import os.path
+import glob
 
 class XcodeException(Exception):
     pass
@@ -65,6 +68,12 @@ def install_simulator(module, xcversion_path, simulator):
 
     if rc != 0:
         raise XcodeException('Could not install {0} simulator: {1}'.format(simulator, err))
+
+    # Remove the installer files as they take up a lot of disk space
+    cache_dir = os.path.expanduser('~/Library/Caches/XcodeInstall')
+    files_to_remove = glob.glob(os.path.join(cache_dir), '*.pkg') + glob.glob(os.path.join(cache_dir), '*.dmg')
+    for f in files_to_remove:
+        os.remove(f)
 
     return out
 
