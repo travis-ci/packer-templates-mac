@@ -31,10 +31,7 @@ FileList['templates/*.yml'].each do |template|
 
   desc "Run a packer build for '#{name}'"
   remote_task name => [generated, records] do
-    uses_dedicated_host = template_data['builders'].any? do |b|
-      b['host'] == 'packer_image_dev'
-    end
-    sh 'bin/assert-host' if uses_dedicated_host
+    sh 'bin/assert-host'
     sh "packer build #{generated}"
   end
 
