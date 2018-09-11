@@ -1,0 +1,16 @@
+- name: install rsyslog-gnutls
+  apt:
+    name: rsyslog-gnutls
+  become: true
+
+- name: install papertrail certificate bundle
+  get_url:
+    url: https://papertrailapp.com/tools/papertrail-bundle.pem
+    dest: /etc/papertrail-bundle.pem
+  become: true
+
+- name: configure rsyslog to target papertrail
+  template:
+    src: etc_rsyslog_d_papertrail.conf.j2
+    dest: /etc/rsyslog.d/papertrail.conf
+  become: true

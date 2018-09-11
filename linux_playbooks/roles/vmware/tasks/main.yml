@@ -1,0 +1,17 @@
+- name: add vmware apt key
+  apt_key:
+    url: https://packages.vmware.com/tools/keys/VMWARE-PACKAGING-GPG-RSA-KEY.pub
+  become: true
+
+- name: add vmware apt repository
+  apt_repository:
+    repo: deb https://packages.vmware.com/packages/ubuntu trusty main
+    filename: vmware-tools
+  become: true
+
+- name: install open-vm-tools-deploypkg
+  apt:
+    name: open-vm-tools-deploypkg
+    # The key situation with this repo is kind of a disaster these days
+    allow_unauthenticated: true
+  become: true

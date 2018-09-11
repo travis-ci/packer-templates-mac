@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+  - users
+  vars_files:
+  - secrets.yml

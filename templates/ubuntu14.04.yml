@@ -1,0 +1,69 @@
+---
+description: Mac infra template for Linux VMs
+variables:
+  vm_name: travis-ci-ubuntu14.04-internal-vanilla-{{ timestamp }}
+  ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
+  vcenter_server: "{{ env `VCENTER_SERVER` }}"
+  vcenter_user: "{{ env `VCENTER_USER` }}"
+  vcenter_password: "{{ env `VCENTER_PASSWORD` }}"
+  vcenter_insecure: "{{ env `VCENTER_INSECURE` }}"
+builders:
+- type: vsphere-iso
+  name: vsphere
+  ssh_timeout: 10m
+  ssh_port: 22
+  ssh_username: travis
+  ssh_password: "{{ user `ssh_password` }}"
+  vcenter_server: "{{ user `vcenter_server` }}"
+  username: "{{ user `vcenter_user` }}"
+  password: "{{ user `vcenter_password` }}"
+  insecure_connection: "{{ user `vcenter_insecure` }}"
+  datacenter: "pod-1"
+  cluster: MacPro_Pod_1
+  datastore: "DataCore1_1"
+  folder: "Vanilla VMs"
+  vm_name: "{{ user `vm_name` }}"
+  CPUs: 2
+  CPU_reservation: 0
+  CPU_limit: 99999
+  RAM: 1024
+  RAM_reservation: 0
+  disk_size: 8192
+  disk_controller_type: pvscsi
+  guest_os_type: other3xLinux64Guest
+  shutdown_timeout: 5m
+  shutdown_command: sudo poweroff
+  create_snapshot: true
+  convert_to_template: false
+  network_card: vmxnet3
+  network: Internal
+  iso_paths:
+  - "[DataCore1_1] ubuntu-14.04.5-server-amd64.iso"
+  floppy_files:
+  - assets/ubuntu-preseed.cfg
+  boot_command:
+  - "<esc><wait>"
+  - "<esc><wait>"
+  - "<enter><wait>"
+  - "/install/vmlinuz "
+  - "initrd=/install/initrd.gz "
+  - "biosdevname=0 "
+  - "auto-install/enable=true "
+  - "priority=critical "
+  - "preseed/file=/media/ubuntu-preseed.cfg "
+  - "<enter>"
+provisioners:
+- type: shell
+  inline:
+  - sudo add-apt-repository -y ppa:ansible/ansible
+  - sudo apt-get update
+  - sudo apt-get install -y ansible
+- type: ansible-local
+  playbook_dir: linux_playbooks
+  playbook_file: linux_playbooks/vanilla.yml
+post-processors:
+- type: shell-local
+  environment_vars:
+  - IMAGE_NAME={{ user `vm_name` }}
+  inline:
+  - bin/finalize-linux-image "$IMAGE_NAME"

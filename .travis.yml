@@ -6,6 +6,8 @@ before_script:
 - sudo chmod +x /usr/local/bin/packer
 - sudo curl -L https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.0/packer-builder-vsphere-clone.linux -o /usr/local/bin/packer-builder-vsphere-clone.linux
 - sudo chmod +x /usr/local/bin/packer-builder-vsphere-clone.linux
+- sudo curl -L https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.0/packer-builder-vsphere-iso.linux -o /usr/local/bin/packer-builder-vsphere-iso.linux
+- sudo chmod +x /usr/local/bin/packer-builder-vsphere-iso.linux
 script:
 - rake
 
