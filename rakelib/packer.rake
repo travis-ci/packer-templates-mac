@@ -25,6 +25,10 @@ class PackerTemplate
     ".build/templates/#{name}.json"
   end
 
+  def records
+    "records/#{name}"
+  end
+
   def generic?
     name == 'base_vm'
   end
@@ -59,7 +63,12 @@ class PackerTemplate
   end
 
   def define_records_tasks
-    directory "records/#{name}"
+    directory records
+
+    desc "Copy records for '#{name}' from the image builder"
+    task "#{name}:records" do
+      sh "rsync -av packer@image-builder.macstadium-us-se-1.travisci.net:packer-templates-mac/#{records}/ #{records}"
+    end
   end
 
   def define_build_tasks
@@ -69,7 +78,9 @@ class PackerTemplate
       sh "packer build #{json_template}"
     end
 
-    task "#{name}:local" => [:secrets]
+    task "#{name}:local" => [:secrets, records] do
+      Rake::Task["#{name}:records"].invoke
+    end
   end
 
   def define_validate_tasks
