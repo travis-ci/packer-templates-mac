@@ -48,6 +48,7 @@ provisioners:
   playbook_file: playbooks/{{ user `name` }}.yml
   inventory_groups: builders
   extra_arguments:
+  - -vvv
   - --extra-vars "xcode_install_user={{ user `xcode_install_user` }} xcode_install_password={{ user `xcode_install_password` }}"
   command: ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 /usr/local/bin/ansible-playbook
 - type: file

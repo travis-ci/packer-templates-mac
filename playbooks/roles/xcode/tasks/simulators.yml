@@ -1,6 +1,10 @@
 - name: Install all available simulator runtimes
   xcode_simulator:
     xcode: "{{ xcode_version }}"
+  retries: 3
+  delay: 3
+  register: result
+  until: result is succeeded
   environment:
     GEM_HOME: "{{ system_gem_dir }}"
     GEM_PATH: "{{ system_gem_dir }}"
