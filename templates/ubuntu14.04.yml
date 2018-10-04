@@ -69,7 +69,7 @@ provisioners:
 - type: file
   direction: download
   source: /tmp/apt_packages
-  destination: {{ user `records_path` }}/apt_packages
+  destination: "{{ user `records_path` }}/apt_packages"
 post-processors:
 - type: shell-local
   environment_vars:
