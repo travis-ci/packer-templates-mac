@@ -2,6 +2,8 @@
 description: Mac infra template for Linux VMs
 variables:
   vm_name: travis-ci-ubuntu14.04-internal-vanilla-{{ timestamp }}
+  records_path: records/ubuntu14.04
+
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
   vcenter_user: "{{ env `VCENTER_USER` }}"
@@ -61,6 +63,13 @@ provisioners:
 - type: ansible-local
   playbook_dir: linux_playbooks
   playbook_file: linux_playbooks/vanilla.yml
+- type: shell
+  inline:
+  - "sudo apt list --installed > /tmp/apt_packages"
+- type: file
+  direction: download
+  source: /tmp/apt_packages
+  destination: {{ user `records_path` }}/apt_packages
 post-processors:
 - type: shell-local
   environment_vars:

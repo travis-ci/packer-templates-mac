@@ -2,9 +2,11 @@
 description: Travis CI Xcode 10.0 Build VM
 variables:
   name: xcode10.0
+  records_path: records/xcode10.0
   template_image_name: travis-ci-macos10.13.6-bare-large
   dirty_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}
+
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
   vcenter_user: "{{ env `VCENTER_USER` }}"
@@ -54,11 +56,11 @@ provisioners:
 - type: file
   direction: download
   source: /tmp/brew_packages
-  destination: records/{{ user `name` }}/brew_packages
+  destination: {{ user `records_path` }}/brew_packages
 - type: file
   direction: download
   source: /tmp/simulators
-  destination: records/{{ user `name` }}/simulators
+  destination: {{ user `records_path` }}/simulators
 post-processors:
 - type: shell-local
   environment_vars:
