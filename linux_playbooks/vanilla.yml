@@ -2,7 +2,8 @@
 - hosts: localhost
   roles:
   - apt
-  - vmware
+  - role: vmware
+    when: ansible_facts['distribution_major_version'] == "14"
   - ssh
   - users
   - logging

@@ -3,7 +3,6 @@ description: Mac infra template for Linux VMs using Xenial
 variables:
   vm_name: travis-ci-ubuntu16.04-internal-vanilla-{{ timestamp }}
   records_path: records/ubuntu16.04
-  ubuntu_release: xenial
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
@@ -70,8 +69,6 @@ provisioners:
 - type: ansible-local
   playbook_dir: linux_playbooks
   playbook_file: linux_playbooks/vanilla.yml
-  extra_arguments:
-  - '--extra-vars "ubuntu_release={{ user `ubuntu_release` }}"'
 - type: shell
   inline:
   - "sudo apt list --installed > /tmp/apt_packages"

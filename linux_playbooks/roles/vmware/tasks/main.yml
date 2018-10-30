@@ -5,7 +5,7 @@
 
 - name: add vmware apt repository
   apt_repository:
-    repo: deb https://packages.vmware.com/packages/ubuntu {{ ubuntu_release }} main
+    repo: deb https://packages.vmware.com/packages/ubuntu {{ ansible_facts['distribution_release'] }} main
     filename: vmware-tools
   become: true
 
