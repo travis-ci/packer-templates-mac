@@ -4,10 +4,10 @@
     xcode_version: '10.1'
     nvm_version: v0.33.11
     node_versions:
-    - 10.12.0
+    - 10.13.0
     - 8.12.0
     - 6.14.4
     - 5.12.0
     - 4.9.1
-    rubies: [2.4.3, 2.3.5]
-    default_ruby: 2.4.3
+    rubies: [2.4.5, 2.3.8]
+    default_ruby: 2.4.5
