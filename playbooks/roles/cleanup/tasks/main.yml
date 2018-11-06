@@ -1,3 +1,7 @@
+- name: Disable Spotlight indexing
+  command: mdutil -i off /
+  become: true
+
 - name: Delete bash history
   file:
     state: absent
