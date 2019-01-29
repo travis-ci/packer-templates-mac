@@ -5,7 +5,7 @@
     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
 - name: Install rubies
-  command: "{{ rvm_binary }} install {{ item }} --binary"
+  command: "{{ rvm_binary }} install {{ item }} {{ '--binary' if rvm_require_binaries else '' }}"
   environment:
     TRAVIS: 'true'
   loop: "{{ rubies }}"
