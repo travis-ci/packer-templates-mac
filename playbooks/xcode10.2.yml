@@ -10,4 +10,5 @@
     - 4.9.1
     rubies: [2.4.5, 2.3.5]
     default_ruby: 2.4.5
+    rvm_version: master
     rvm_require_binaries: false
