@@ -1,8 +1,3 @@
-- name: install open-vm-tools
-  apt:
-    name: open-vm-tools=2:10.0.7-3227872-2ubuntu1
-  become: true
-
 - name: add vmware apt key
   apt_key:
     url: https://packages.vmware.com/tools/keys/VMWARE-PACKAGING-GPG-RSA-KEY.pub
