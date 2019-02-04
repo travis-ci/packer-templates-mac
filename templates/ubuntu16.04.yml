@@ -30,7 +30,7 @@ builders:
   CPU_limit: 99999
   RAM: 4096
   RAM_reservation: 0
-  disk_size: 8192
+  disk_size: 32768
   disk_controller_type: pvscsi
   guest_os_type: other3xLinux64Guest
   shutdown_timeout: 5m
