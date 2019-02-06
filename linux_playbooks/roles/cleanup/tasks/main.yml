@@ -2,6 +2,5 @@
   user:
     name: travis
     password_lock: true
-    expires: 0 # Expired at the Unix epoch
     shell: /usr/sbin/nologin
   become: true
