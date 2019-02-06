@@ -21,8 +21,8 @@
   become: true
 
 - name: copy sshd configuration
-  copy:
-    src: etc_ssh_sshd_config
+  template:
+    src: etc_ssh_sshd_config.j2
     dest: /etc/ssh/sshd_config
     owner: root
     group: root

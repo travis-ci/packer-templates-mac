@@ -1,7 +1,14 @@
-- name: install rsyslog-gnutls
+- name: install rsyslog-gnutls (apt)
   apt:
     name: rsyslog-gnutls
   become: true
+  when: ansible_facts['pkg_mgr'] == "apt"
+
+- name: install rsyslog-gnutls (yum)
+  yum:
+    name: rsyslog-gnutls
+  become: true
+  when: ansible_facts['pkg_mgr'] == "yum"
 
 - name: install papertrail certificate bundle
   get_url:

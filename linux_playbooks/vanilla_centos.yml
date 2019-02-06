@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  roles:
+  - yum
+  - ssh
+  - users
+  - logging
+  - cleanup
+  vars_files:
+  - secrets.yml
+  vars:
+    user_groups:
+      - wheel
+      - ssh-user
+    sftp_server_path: /usr/libexec/openssh/sftp-server
