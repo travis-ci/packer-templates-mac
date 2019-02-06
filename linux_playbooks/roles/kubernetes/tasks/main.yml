@@ -15,6 +15,11 @@
     value: 1
   become: true
 
+- name: disable swap mount
+  mount:
+    fstype: swap
+    state: absent
+
 - name: add kubernetes repository (yum)
   yum_repository:
     name: kubernetes
