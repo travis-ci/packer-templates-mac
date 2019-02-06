@@ -17,6 +17,7 @@
 
 - name: disable swap mount
   mount:
+    path: swap
     fstype: swap
     state: absent
 
