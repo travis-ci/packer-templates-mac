@@ -16,8 +16,10 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+  become: true
 
 - name: start docker service
   systemd:
     name: docker
     state: started
+  become: true
