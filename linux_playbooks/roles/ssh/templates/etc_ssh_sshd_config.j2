@@ -22,7 +22,7 @@ PrintMotd no
 PrintLastLog yes
 TCPKeepAlive yes
 AcceptEnv LANG LC_*
-Subsystem sftp /usr/lib/openssh/sftp-server
+Subsystem sftp {{ sftp_server_path }}
 UsePAM yes
 UseDNS no
 AllowAgentForwarding yes

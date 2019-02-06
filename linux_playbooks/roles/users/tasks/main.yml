@@ -1,9 +1,7 @@
 - name: Create users
   user:
     name: "{{ item.key }}"
-    groups:
-    - sudo
-    - ssh-user
+    groups: "{{ user_groups }}"
     shell: /bin/bash
     home: /home/{{ item.key }}
   loop: "{{ users|dict2items }}"
