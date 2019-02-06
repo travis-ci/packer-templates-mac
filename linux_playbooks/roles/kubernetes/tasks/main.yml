@@ -20,11 +20,13 @@
     path: swap
     fstype: swap
     state: absent
+  become: true
 
 # When used for master VMs, we need this tool
 - name: install jq
   yum:
     name: jq
+  become: true
 
 - name: add kubernetes repository (yum)
   yum_repository:
