@@ -52,7 +52,7 @@ provisioners:
   playbook_file: linux_playbooks/vanilla_centos.yml
 - type: shell
   inline:
-  - "sudo yum list installed > /tmp/yum_packages"
+  - "yum list installed > /tmp/yum_packages"
 - type: file
   direction: download
   source: /tmp/yum_packages
