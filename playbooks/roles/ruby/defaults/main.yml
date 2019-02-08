@@ -3,6 +3,8 @@ rubies:
 - 2.4.3
 - 2.3.5
 default_ruby: 2.4.3
+rvm_version: stable
+rvm_require_binaries: true
 global_rubygems:
 - bundler
 - cocoapods

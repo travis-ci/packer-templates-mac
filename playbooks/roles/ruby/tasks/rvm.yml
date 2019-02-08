@@ -22,7 +22,7 @@
   when: rvm_installed.stat.exists == false
 
 - name: Install RVM
-  shell: curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles
+  shell: curl -sSL https://get.rvm.io | bash -s {{ rvm_version }} --ignore-dotfiles
   when: rvm_installed.stat.exists == false
 
 - name: Clean up RVM

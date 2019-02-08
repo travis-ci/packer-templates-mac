@@ -5,7 +5,7 @@
     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
 - name: Install rubies
-  command: "{{ rvm_binary }} install {{ item }} --binary"
+  command: "{{ rvm_binary }} install {{ item }} {{ '--binary' if rvm_require_binaries else '' }}"
   environment:
     TRAVIS: 'true'
   loop: "{{ rubies }}"
@@ -14,7 +14,7 @@
   command: "{{ rvm_binary }} alias create default {{ default_ruby }}"
 
 - name: Install global RubyGems
-  command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc --no-ri"
+  command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc"
   loop: "{{ global_rubygems }}"
 
 - name: Cleanup RubyGems
