@@ -1,0 +1,57 @@
+- name: enable br_netfilter
+  modprobe:
+    name: br_netfilter
+  become: true
+
+- name: fix iptables (ipv4)
+  sysctl:
+    name: net.bridge.bridge-nf-call-ip6tables
+    value: 1
+  become: true
+
+- name: fix iptables (ipv6)
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+  become: true
+
+- name: disable swap mount
+  mount:
+    path: swap
+    fstype: swap
+    state: absent
+  become: true
+
+# When used for master VMs, we need this tool
+- name: install jq
+  yum:
+    name: jq
+  become: true
+
+- name: add kubernetes repository (yum)
+  yum_repository:
+    name: kubernetes
+    description: Kubernetes
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey:
+    - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+    - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    exclude: kube*
+  become: true
+
+- name: install kubernetes tools (yum)
+  yum:
+    name:
+    - kubelet
+    - kubeadm
+    - kubectl
+    disable_excludes: kubernetes
+  become: true
+
+- name: enable kubelet service
+  systemd:
+    name: kubelet
+    enabled: true
+  become: true
