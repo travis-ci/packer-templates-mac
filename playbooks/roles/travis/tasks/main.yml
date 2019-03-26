@@ -3,3 +3,6 @@
 
 - name: Create system-info report
   import_tasks: system_info.yml
+
+- name: Prepare for instant clone
+  import_tasks: instant_clone.yml

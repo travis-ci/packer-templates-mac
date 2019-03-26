@@ -1,0 +1,5 @@
+- name: Install freeze script
+  copy:
+    src: freeze.sh
+    dest: /Users/travis/freeze.sh
+    mode: 0755
