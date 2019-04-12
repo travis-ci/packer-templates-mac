@@ -35,8 +35,6 @@ class PackerTemplate
 
   def define_tasks
     define_json_tasks
-    define_records_tasks
-    define_build_tasks
     define_validate_tasks
   end
 
@@ -59,27 +57,6 @@ class PackerTemplate
       open t.name, 'w' do |f|
         f.write JSON.pretty_generate(data)
       end
-    end
-  end
-
-  def define_records_tasks
-    directory records
-
-    desc "Copy records for '#{name}' from the image builder"
-    task "#{name}:records" do
-      sh "rsync -av packer@image-builder.macstadium-us-se-1.travisci.net:packer-templates-mac/#{records}/ #{records}"
-    end
-  end
-
-  def define_build_tasks
-    desc "Run a packer build for '#{name}'"
-    remote_task name => [json_template, "records/#{name}"] do
-      sh 'bin/assert-host' if uses_dedicated_host?
-      sh "packer build #{json_template}"
-    end
-
-    task "#{name}:local" => [:secrets, records] do
-      Rake::Task["#{name}:records"].invoke
     end
   end
 

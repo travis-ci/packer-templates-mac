@@ -1,6 +1,0 @@
-'10.13':
-  name: travis-ci-macos10.13-xcode9.4-vanilla
-  version: '10.13'
-'10.13-large':
-  name: travis-ci-macos10.13-xcode9.4-vanilla-large
-  version: '10.13'
