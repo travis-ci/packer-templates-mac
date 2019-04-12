@@ -3,7 +3,7 @@ description: Travis CI Xcode 10.2 Build VM
 variables:
   name: xcode10.2
   records_path: records/xcode10.2
-  template_image_name: travis-ci-macos10.14-bare-large
+  template_image_name: travis-ci-macos10.14.4-bare-large
   dirty_image_name: travis-ci-macos10.14-xcode10.2-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.14-xcode10.2-{{ timestamp }}
 
