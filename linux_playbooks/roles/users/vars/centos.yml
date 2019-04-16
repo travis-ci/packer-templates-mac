@@ -1,0 +1,3 @@
+user_groups:
+- wheel
+- ssh-user

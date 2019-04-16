@@ -1,14 +1,20 @@
 [dhcp]
-10.182.64.214
-10.182.64.212
+dhcp-server-1.macstadium-us-se-1.travisci.net
+dhcp-server-2.macstadium-us-se-1.travisci.net
 
-[wjb]
-wjb-1.macstadium-us-se-1.travisci.net
-wjb-2.macstadium-us-se-1.travisci.net
+[cluster-1]
+cluster-1-master.macstadium-us-se-1.travisci.net
+cluster-1-node-1.macstadium-us-se-1.travisci.net
+cluster-1-node-2.macstadium-us-se-1.travisci.net
+cluster-1-node-3.macstadium-us-se-1.travisci.net
 
-[util]
-util-1.macstadium-us-se-1.travisci.net
-util-2.macstadium-us-se-1.travisci.net
+[cluster-2]
+cluster-2-master.macstadium-us-se-1.travisci.net
+cluster-2-node-1.macstadium-us-se-1.travisci.net
+cluster-2-node-2.macstadium-us-se-1.travisci.net
+cluster-2-node-3.macstadium-us-se-1.travisci.net
 
-[imagebuilder]
-image-builder.macstadium-us-se-1.travisci.net
+[cluster-staging]
+cluster-staging-master.macstadium-us-se-1.travisci.net
+cluster-staging-node-1.macstadium-us-se-1.travisci.net
+cluster-staging-node-2.macstadium-us-se-1.travisci.net

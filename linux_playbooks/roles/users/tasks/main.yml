@@ -1,3 +1,6 @@
+- name: Load groups for OS
+  include_vars: "{{ ansible_distribution | lower }}.yml"
+
 - name: Create users
   user:
     name: "{{ item.key }}"
@@ -13,4 +16,11 @@
     key: https://github.com/{{ item.value }}.keys
     exclusive: true
   loop: "{{ users|dict2items }}"
+  become: true
+
+- name: Remove users
+  user:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ users_to_remove }}"
   become: true
