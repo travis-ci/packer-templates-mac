@@ -1,13 +1,11 @@
-diff --git a/lib/xcode/install.rb b/lib/xcode/install.rb
-index 453c2bb..c8bf04b 100644
---- a/lib/xcode/install.rb
-+++ b/lib/xcode/install.rb
-@@ -682,7 +682,7 @@ HELP
+--- lib/xcode/install.rb-orig	2019-06-28 04:15:44.000000000 +0000
++++ lib/xcode/install.rb	2019-06-28 04:17:50.000000000 +0000
+@@ -449,7 +449,7 @@
      end
  
-     def verify_app_security_assessment
--      puts `/usr/sbin/spctl --assess --verbose=4 --type execute #{@path}`
-+      puts `/usr/bin/codesign --verify --verbose #{@path}`
+     def verify_integrity(path)
+-      puts `/usr/sbin/spctl --assess --verbose=4 --type execute #{path}`
++      puts `/usr/bin/codesign --verify --verbose #{path}`
        $?.exitstatus.zero?
      end
  
