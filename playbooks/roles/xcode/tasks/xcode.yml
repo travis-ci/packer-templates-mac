@@ -7,6 +7,12 @@
     executable: /usr/bin/gem
   become: true
 
+- name: Apply patch to use codesign 
+  patch:
+    src: xcode_install_use_codesign_to_verify.diff
+    basedir: /Library/Ruby/Gems/2.3.0/gems/xcode-install-2.5.0
+    strip: 1
+
 - name: Install Xcode {{ xcode_version }}
   xcode:
     version: "{{ xcode_version }}"
