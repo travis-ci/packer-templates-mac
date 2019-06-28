@@ -12,6 +12,7 @@
     src: xcode_install_use_codesign_to_verify.diff
     basedir: /Library/Ruby/Gems/2.3.0/gems/xcode-install-2.5.0
     strip: 1
+  become: true
 
 - name: Install Xcode {{ xcode_version }}
   xcode:
