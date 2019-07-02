@@ -28,5 +28,6 @@
 
 - name: Move Xcode to Application
   command: creates="/Applications/Xcoxode-beta.app" mv /Users/travis/Downloads/Xcode-beta.app/ /Applications/Xcode-beta.app/
+  command: /usr/bin/xcode-select -s /Applications/Xcode-beta.app/
   when: Xcode_stat.stat.exists
   become: true
