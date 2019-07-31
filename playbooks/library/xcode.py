@@ -20,6 +20,7 @@ def install_xcode(module, xcversion_path, version):
     rc, out, err = module.run_command([
         xcversion_path,
         "install",
+        "--force",
         version
     ])
 
