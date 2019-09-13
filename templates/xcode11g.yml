@@ -1,11 +1,11 @@
 ---
 description: Travis CI Xcode VM Xcode 11 GM Build 11A419c
 variables:
-  name: xcode11GM
-  records_path: records/xcode11GM
+  name: xcode11g
+  records_path: records/xcode11g
   template_image_name: travis-ci-macos10.14.4-bare-large
-  dirty_image_name: travis-ci-macos10.14-xcode11GM-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.14-xcode11GM-{{ timestamp }}
+  dirty_image_name: travis-ci-macos10.14-xcode11g-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.14-xcode11g-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
