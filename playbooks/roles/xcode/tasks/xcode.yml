@@ -2,7 +2,7 @@
   gem:
     name: xcode-install
     include_doc: false
-    user_install: true
+    user_install: false
     state: latest
     executable: /usr/bin/gem
   become: false
