@@ -2,10 +2,10 @@
   gem:
     name: xcode-install
     include_doc: false
-    user_install: false
+    user_install: true
     state: latest
     executable: /usr/bin/gem
-  become: true
+  become: false
 
   #- name: Apply patch to use codesign 
   #  patch:
