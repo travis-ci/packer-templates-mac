@@ -6,9 +6,6 @@
   shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   when: homebrew_installed.stat.exists == false
 
-- name: Update Homebrew
-  command: /usr/local/bin/brew update
-
 - name: Install Homebrew casks
   homebrew_cask:
     name: "{{ homebrew_casks }}"
