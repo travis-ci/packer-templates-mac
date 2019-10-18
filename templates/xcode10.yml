@@ -41,10 +41,6 @@ builders:
   create_snapshot: true
   convert_to_template: false
 provisioners:
-- type: shell
-  inline:
-  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  - /usr/local/bin/brew install ansible
 - type: ansible-local
   playbook_dir: playbooks
   playbook_file: playbooks/{{ user `name` }}.yml
