@@ -6,16 +6,8 @@
     tags: [config]
   - role: ssh
     tags: [ssh]
-  - role: ruby
-    tags: [ruby]
-  - role: xcode
-    tags: [xcode]
   - role: homebrew
     tags: [homebrew]
-  - role: cocoapods
-    tags: [cocoapods]
-  - role: node
-    tags: [node]
   - role: travis
     tags: [travis]
   - role: cleanup
