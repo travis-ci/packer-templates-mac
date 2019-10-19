@@ -49,14 +49,14 @@ provisioners:
   - -vvv
   - --extra-vars "xcode_install_user={{ user `xcode_install_user` }} xcode_install_password={{ user `xcode_install_password` }}"
   command: ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 /usr/local/bin/ansible-playbook
-- type: file
-  direction: download
-  source: /tmp/brew_packages
-  destination: "{{ user `records_path` }}/brew_packages"
-- type: file
-  direction: download
-  source: /tmp/simulators
-  destination: "{{ user `records_path` }}/simulators"
+#- type: file
+#  direction: download
+#  source: /tmp/brew_packages
+#  destination: "{{ user `records_path` }}/brew_packages"
+#- type: file
+#  direction: download
+#  source: /tmp/simulators
+#  destination: "{{ user `records_path` }}/simulators"
 post-processors:
 - type: shell-local
   environment_vars:
