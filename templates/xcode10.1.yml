@@ -3,7 +3,7 @@ description: Travis CI Xcode 10.1 Build VM (brew updated)
 variables:
   name: xcode10.1
   records_path: records/xcode101
-  template_image_name: travis-ci-macos10.13-xcode10-20191018
+  template_image_name: travis-ci-macos10.13-xcode10.1-20191018
   dirty_image_name: travis-ci-macos10.13-xcode10.1-2019{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.13-xcode10.1-2019{{ timestamp }}
 
