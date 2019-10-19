@@ -6,6 +6,10 @@
     recurse: true
   become: true
 
+- name: Test unset git protocol 
+  command: >
+    /usr/bin/git config --global --unset protocol.version
+
 - name: Clone system-info
   git:
     repo: https://github.com/travis-ci/system-info.git
@@ -13,12 +17,12 @@
 
 - name: Install system-info dependencies
   command: >
-    /Users/travis/.rvm/bin/rvm 2.6.4 do
+    /Users/travis/.rvm/bin/rvm 2.4.3 do
     bundle install --gemfile=/Users/travis/system-info/Gemfile
 
 - name: Create system-info report
   command: >
-    /Users/travis/.rvm/bin/rvm 2.6.4 do
+    /Users/travis/.rvm/bin/rvm 2.4.3 do
     bundle exec /Users/travis/system-info/exe/system-info report
     --formats human,json
     --human-output /usr/local/travis/system_info
