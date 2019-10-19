@@ -1,11 +1,11 @@
 ---
-description: Travis CI Xcode 10.1 Build VM (brew updated)
+description: Travis CI Xcode 10.1 Build VM
 variables:
   name: xcode10.1
-  records_path: records/xcode101
-  template_image_name: travis-ci-macos10.13-xcode10-20191018
-  dirty_image_name: travis-ci-macos10.13-xcode10.1-2019{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.13-xcode10.1-2019{{ timestamp }}
+  records_path: records/xcode10.1
+  template_image_name: travis-ci-macos10.13.6-bare-large
+  dirty_image_name: travis-ci-macos10.13-xcode10.1-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.13-xcode10.1-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
@@ -41,6 +41,10 @@ builders:
   create_snapshot: true
   convert_to_template: false
 provisioners:
+- type: shell
+  inline:
+  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  - /usr/local/bin/brew install ansible
 - type: ansible-local
   playbook_dir: playbooks
   playbook_file: playbooks/{{ user `name` }}.yml
@@ -49,6 +53,14 @@ provisioners:
   - -vvv
   - --extra-vars "xcode_install_user={{ user `xcode_install_user` }} xcode_install_password={{ user `xcode_install_password` }}"
   command: ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 /usr/local/bin/ansible-playbook
+- type: file
+  direction: download
+  source: /tmp/brew_packages
+  destination: "{{ user `records_path` }}/brew_packages"
+- type: file
+  direction: download
+  source: /tmp/simulators
+  destination: "{{ user `records_path` }}/simulators"
 post-processors:
 - type: shell-local
   environment_vars:
