@@ -26,7 +26,7 @@ builders:
   insecure_connection: "{{ user `vcenter_insecure` }}"
   datacenter: "pod-1"
   host: "packer_image_dev"
-  datastore: "DataCore1_1"
+  datastore: "DataCore1_2"
   folder: "In Progress Base VMs"
   template: "{{ user `template_image_name` }}"
   vm_name: "{{ user `dirty_image_name` }}"
