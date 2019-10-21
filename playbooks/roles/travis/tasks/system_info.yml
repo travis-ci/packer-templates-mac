@@ -17,7 +17,7 @@
 
 - name: Install system-info dependencies
   command: >
-    /Users/travis/.rvm/bin/rvm 2.6.4. do
+    /Users/travis/.rvm/bin/rvm 2.6.4 do
     bundle install --gemfile=/Users/travis/system-info/Gemfile
 
 - name: Create system-info report
