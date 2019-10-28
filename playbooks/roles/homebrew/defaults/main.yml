@@ -16,10 +16,10 @@ homebrew_packages:
 - pyenv
 - python
 - sqlite
-- swiftlint
+#- swiftlint
 - tmate
 - wget
-- xctool
+#- xctool
 homebrew_casks:
 - java
 - xquartz

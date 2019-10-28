@@ -1,8 +1,7 @@
 rvm_binary: /Users/travis/.rvm/bin/rvm
 rubies:
-- 2.4.3
-- 2.3.5
-default_ruby: 2.4.3
+- 2.4.5
+default_ruby: 2.4.5
 rvm_version: stable
 rvm_require_binaries: true
 global_rubygems:
@@ -12,3 +11,4 @@ global_rubygems:
 - nomad-cli
 - rake
 - xcpretty
+- xcode-install

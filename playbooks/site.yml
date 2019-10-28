@@ -6,12 +6,14 @@
     tags: [config]
   - role: ssh
     tags: [ssh]
-  - role: xcode
-    tags: [xcode]
   - role: homebrew
     tags: [homebrew]
   - role: ruby
-    tags: [ruby]
+    tags: [ruby]  
+  - role: xcode
+    tags: [xcode]
+  - role: brew
+    tags: [brew] 
   - role: cocoapods
     tags: [cocoapods]
   - role: node

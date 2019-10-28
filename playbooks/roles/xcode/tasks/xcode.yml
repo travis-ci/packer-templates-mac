@@ -1,11 +1,11 @@
-- name: Install xcode-install gem
-  gem:
-    name: xcode-install
-    include_doc: false
-    user_install: false
-    state: latest
-    executable: /usr/bin/gem
-  become: true
+# - name: Install xcode-install gem
+#   gem:
+#     name: xcode-install
+#     include_doc: false
+#     user_install: false
+#     state: latest
+#     executable: /usr/bin/gem
+#   become: true
 
   #- name: Apply patch to use codesign 
   #  patch:
@@ -18,8 +18,9 @@
   xcode:
     version: "{{ xcode_version }}"
   environment:
-    GEM_HOME: "{{ system_gem_dir }}"
-    GEM_PATH: "{{ system_gem_dir }}"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.4.5"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.4.5:/Users/travis/.rvm/gems/ruby-2.4.5@global"
+    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.4.5/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 - name: state of Xcode
