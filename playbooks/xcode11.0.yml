@@ -8,6 +8,6 @@
     - 12.13.0
     - 10.17.0
     - 8.16.2
-    rubies: [2.4.5]
-    default_ruby: 2.4.5
+    rubies: [2.6.4]
+    default_ruby: 2.6.4
     rvm_version: stable

@@ -1,7 +1,7 @@
 rvm_binary: /Users/travis/.rvm/bin/rvm
 rubies:
-- 2.4.5
-default_ruby: 2.4.5
+- 2.6.4
+default_ruby: 2.6.4
 rvm_version: stable
 rvm_require_binaries: true
 global_rubygems:
