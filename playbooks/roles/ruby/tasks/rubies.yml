@@ -14,7 +14,7 @@
   command: "{{ rvm_binary }} alias create default {{ default_ruby }}"
 
 - name: Install global RubyGems (removed all)
-  command: "{{ rvm_binary }} 2.4.5,2.6.4 do gem install {{ item }} --no-doc"
+  command: "{{ rvm_binary }} 2.4.5 do gem install {{ item }} --no-doc"
   loop: "{{ global_rubygems }}"
 
 - name: Cleanup RubyGems
