@@ -13,9 +13,19 @@
 - name: Set ruby {{ default_ruby }} as the default ruby version
   command: "{{ rvm_binary }} alias create default {{ default_ruby }}"
 
-- name: Install global RubyGems (removed all)
-  command: "{{ rvm_binary }} 2.6.4 do gem install {{ item }} --no-doc"
+- name: Install global RubyGems 
+  command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc"
   loop: "{{ global_rubygems }}"
+
+- name: Install xcode-install gem
+  command: "{{ rvm_binary }} 2.6.4 do gem install xcode-install --no-doc"
+
+- name: Patch xcode-install 
+  copy:
+    src: install.rb
+    dest: /Users/travis/.rvm/gems/ruby-2.6.4/gems/xcode-install-2.6.1/lib/xcode/
+    mode: 0644
+    owner: travis
 
 - name: Cleanup RubyGems
   command: "{{ rvm_binary }} all do gem cleanup"

@@ -11,4 +11,3 @@ global_rubygems:
 - nomad-cli
 - rake
 - xcpretty
-- xcode-install
