@@ -1,7 +1,7 @@
 ---
 - import_playbook: site.yml
   vars:
-    xcode_version: '11.1'
+    xcode_version: '11.0'
     nvm_version: v0.35.0
     node_versions:
     - 13.0.1
