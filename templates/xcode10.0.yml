@@ -3,9 +3,9 @@ description: Travis CI Xcode 10.0 Build VM
 variables:
   name: xcode10.0
   records_path: records/xcode10.0
-  template_image_name: travis-ci-macos-10.13-vanilla-1519677570
-  dirty_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}
+  template_image_name: travis-ci-macos10.14.4-bare-large
+  dirty_image_name: travis-ci-macos10.14-xcode10-19-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.13-xcode10-19-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
@@ -26,7 +26,7 @@ builders:
   insecure_connection: "{{ user `vcenter_insecure` }}"
   datacenter: "pod-1"
   host: "packer_image_dev"
-  datastore: "DataCore1_2"
+  datastore: "DataCore1_1"
   folder: "In Progress Base VMs"
   template: "{{ user `template_image_name` }}"
   vm_name: "{{ user `dirty_image_name` }}"
