@@ -6,6 +6,3 @@
 
 - name: Copy dotfiles
   import_tasks: dotfiles.yml
-
-- name: Use Git protocol v2
-  command: git config --global protocol.version 2
