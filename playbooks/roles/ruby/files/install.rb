@@ -8,10 +8,8 @@ require 'xcode/install/command'
 require 'xcode/install/version'
 require 'shellwords'
 require 'open3'
-require 'fastlane'
-require 'fastlane/helper/sh_helper'
 require 'fastlane/action'
-require 'fastlane/actions/verify_xcode'
+require 'fastlane/actions/verify_build'
 
 module XcodeInstall
   CACHE_DIR = Pathname.new("#{ENV['HOME']}/Library/Caches/XcodeInstall")
@@ -578,6 +576,9 @@ HELP
   end
 
   class InstalledXcode
+    TEAM_IDENTIFIER = '59GAB85EFG'.freeze
+    AUTHORITY = 'Software Signing'.freeze
+
     attr_reader :path
     attr_reader :version
     attr_reader :bundle_version
@@ -686,10 +687,7 @@ HELP
     end
 
     def verify_app_cert
-      Fastlane::Actions::VerifyXcodeAction.run(xcode_path: @path.to_s)
-      true
-    rescue
-      false
+      return true
     end
   end
 
