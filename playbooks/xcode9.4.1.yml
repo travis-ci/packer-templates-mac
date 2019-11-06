@@ -10,3 +10,4 @@
     - 8.16.2
     rubies: [2.6.3]
     default_ruby: 2.6.3
+    rvm_version: master
