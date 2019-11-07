@@ -4,6 +4,12 @@
     src: /usr/local/opt/gdbm/lib/libgdbm.dylib
     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
+- name: "Workaround: Symlinking readline lib"
+  file:
+    state: link
+    src: /usr/local/opt/readline/lib/libreadline.8.0.dylib
+    dest: /usr/local/opt/readline/lib/libreadline.7.dylib
+
 - name: Install rubies
   command: "{{ rvm_binary }} install {{ item }} {{ '--binary' if rvm_require_binaries else '' }}"
   environment:
