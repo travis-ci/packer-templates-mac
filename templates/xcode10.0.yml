@@ -3,7 +3,7 @@ description: Travis CI Xcode VM Xcode 10.0 VM
 variables:
   name: xcode10
   records_path: records/xcode100
-  template_image_name: travis-ci-macos10.13-xcode10-20191018
+  template_image_name: xcode10-231
   dirty_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}
 
@@ -26,7 +26,7 @@ builders:
   insecure_connection: "{{ user `vcenter_insecure` }}"
   datacenter: "pod-1"
   host: "packer_image_dev"
-  datastore: "DataCore1_2"
+  datastore: "DataCore1_1"
   folder: "In Progress Base VMs"
   template: "{{ user `template_image_name` }}"
   vm_name: "{{ user `dirty_image_name` }}"
