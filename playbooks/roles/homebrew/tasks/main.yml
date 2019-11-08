@@ -32,7 +32,7 @@
 - name: Install Ruby 2.6.3
   command: /Users/travis/.rvm/bin/rvm install 2.6.3 --binary
 
-- name: Write installed packages to file
-  copy:
-    content: "{{ brew_versions.stdout }}"
-    dest: /tmp/brew_packages
+#- name: Write installed packages to file
+#  copy:
+#    content: "{{ brew_versions.stdout }}"
+#    dest: /tmp/brew_packages
