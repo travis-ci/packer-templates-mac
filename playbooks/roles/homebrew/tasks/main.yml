@@ -5,8 +5,8 @@
 - name: Update Homebrew
   command: /usr/local/bin/brew update
 
-- name: Upgrade readline
-  command: /usr/local/bin/brew upgrade readline
+#- name: Upgrade readline
+#  command: /usr/local/bin/brew upgrade readline
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
@@ -15,6 +15,7 @@
 - name: "Symlinking readline lib"
   file:
     state: link
+    force: yes
     src: /usr/local/opt/readline/lib/libreadline.8.0.dylib
     dest: /usr/local/opt/readline/lib/libreadline.7.dylib
 
