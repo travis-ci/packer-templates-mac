@@ -5,8 +5,11 @@
 - name: Update Homebrew
   command: /usr/local/bin/brew update
 
-#- name: Upgrade readline
-#  command: /usr/local/bin/brew upgrade readline
+- name: Upgrade readline
+  command: /usr/local/bin/brew reinstall readline
+
+- name: Upgrade gdbm
+  command: /usr/local/bin/brew reinstall gdbm  
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
@@ -16,8 +19,18 @@
   file:
     state: link
     force: yes
-    src: /usr/local/opt/readline/lib/libreadline.8.0.dylib
+    src: /usr/local/opt/readline/lib/libreadline.dylib
     dest: /usr/local/opt/readline/lib/libreadline.7.dylib
+
+- name: "Symlinking gdbm lib"
+  file:
+    state: link
+    force: yes
+    src: /usr/local/opt/gdbm/lib/libgdbm.dylib
+    dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
+
+- name: Install Ruby 2.6.3
+  command: /Users/travis/.rvm/bin/rvm install 2.6.3 --binary
 
 - name: Write installed packages to file
   copy:

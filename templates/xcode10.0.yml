@@ -4,8 +4,8 @@ variables:
   name: xcode10
   records_path: records/xcode100
   template_image_name: macos10.13-xcode10
-  dirty_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.13-xcode10-{{ timestamp }}
+  dirty_image_name: travis-ci-macos10.13-xcode10-19-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.13-xcode10-19-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
