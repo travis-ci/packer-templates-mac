@@ -5,6 +5,9 @@
 - name: Update Homebrew
   command: /usr/local/bin/brew update
 
+- name: Update Homebrew
+  command: /usr/local/bin/brew upgrade
+
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
   register: brew_versions
