@@ -5,8 +5,8 @@
 - name: Update Homebrew
   command: /usr/local/bin/brew update
 
-- name: Update Homebrew
-  command: /usr/local/bin/brew upgrade
+- name: Upgrade readline
+  command: /usr/local/bin/brew upgrade readline
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
