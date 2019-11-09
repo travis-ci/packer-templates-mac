@@ -29,8 +29,8 @@
 #     src: /usr/local/opt/gdbm/lib/libgdbm.dylib
 #     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
-#- name: Install Ruby 2.6.3
-#  command: /Users/travis/.rvm/bin/rvm install 2.6.3 --binary
+- name: Install Ruby 2.6.3
+  command: /Users/travis/.rvm/bin/rvm install 2.6.3 --binary --fuzzy
 
 #- name: Write installed packages to file
 #  copy:
