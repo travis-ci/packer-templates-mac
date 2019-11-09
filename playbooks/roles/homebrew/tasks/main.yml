@@ -32,6 +32,9 @@
 - name: Install Ruby 2.6.3
   command: /Users/travis/.rvm/bin/rvm install 2.6.3 --binary --fuzzy
 
+- name: Upgrade readline
+  command: /usr/local/bin/brew reinstall ansible  
+
 #- name: Write installed packages to file
 #  copy:
 #    content: "{{ brew_versions.stdout }}"
