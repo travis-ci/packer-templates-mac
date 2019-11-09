@@ -14,6 +14,20 @@
   homebrew:
     name: "{{ homebrew_packages }}"
     update_homebrew: true
+    
+- name: "Symlinking readline lib"
+  file:
+    state: link
+    force: yes
+    src: /usr/local/opt/readline/lib/libreadline.dylib
+    dest: /usr/local/opt/readline/lib/libreadline.7.dylib
+
+- name: "Symlinking gdbm lib"
+  file:
+    state: link
+    force: yes
+    src: /usr/local/opt/gdbm/lib/libgdbm.dylib
+    dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
 #- name: Gather installed versions of packages
 #  command: /usr/local/bin/brew ls --versions

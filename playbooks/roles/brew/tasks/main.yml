@@ -1,8 +1,14 @@
 
-- name: Install Homebrew packages
-  homebrew:
-    name: "{{ homebrew_packages }}"
-    update_homebrew: true
+# - name: Install Homebrew packages
+#   homebrew:
+#     name: "{{ homebrew_packages }}"
+#     update_homebrew: true
+
+- name: Install swiftlint
+  command: /usr/local/bin/brew install https://github.com/Homebrew/homebrew-core/blob/beff7ac60095574d0fe6dc7305a09986cc75a78b/Formula/swiftlint.rb
+
+- name: Install xctool
+  command: /usr/local/bin/brew install xctool
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
