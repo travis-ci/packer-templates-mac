@@ -5,8 +5,8 @@
 - name: Update Homebrew
   command: /usr/local/bin/brew update
 
-#- name: Upgrade readline
-#  command: /usr/local/bin/brew reinstall readline
+- name: Upgrade readline
+  command: /usr/local/bin/brew reinstall readline
 
 #- name: Upgrade gdbm
 #  command: /usr/local/bin/brew reinstall gdbm  
@@ -15,12 +15,12 @@
   command: /usr/local/bin/brew ls --versions
   register: brew_versions
 
-# - name: "Symlinking readline lib"
-#   file:
-#     state: link
-#     force: yes
-#     src: /usr/local/opt/readline/lib/libreadline.dylib
-#     dest: /usr/local/opt/readline/lib/libreadline.7.dylib
+- name: "Symlinking readline lib"
+  file:
+    state: link
+    force: yes
+    src: /usr/local/opt/readline/lib/libreadline.dylib
+    dest: /usr/local/opt/readline/lib/libreadline.7.dylib
 
 # - name: "Symlinking gdbm lib"
 #   file:
