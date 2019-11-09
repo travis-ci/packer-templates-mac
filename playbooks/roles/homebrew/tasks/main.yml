@@ -9,7 +9,7 @@
   command: /usr/local/bin/brew reinstall readline
 
 - name: Upgrade gdbm
- command: /usr/local/bin/brew reinstall gdbm  
+  command: /usr/local/bin/brew reinstall gdbm  
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions
