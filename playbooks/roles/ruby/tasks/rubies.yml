@@ -27,12 +27,12 @@
 - name: Install xcode-install gem
   command: "{{ rvm_binary }} 2.6.3 do gem install xcode-install --no-doc"
 
-# - name: Patch xcode-install 
-#   copy:
-#     src: install.rb
-#     dest: /Users/travis/.rvm/gems/ruby-2.6.3/gems/xcode-install-2.6.2/lib/xcode/
-#     mode: 0644
-#     owner: travis
+- name: Patch xcode-install 
+  copy:
+    src: install.rb
+    dest: /Users/travis/.rvm/gems/ruby-2.6.3/gems/xcode-install-2.6.2/lib/xcode/
+    mode: 0644
+    owner: travis
 
 - name: Cleanup RubyGems
   command: "{{ rvm_binary }} all do gem cleanup"
