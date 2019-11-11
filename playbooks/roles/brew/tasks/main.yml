@@ -5,7 +5,7 @@
 #     update_homebrew: true
 
 - name: Install swiftlint
-  command: /usr/local/bin/brew install https://github.com/Homebrew/homebrew-core/blob/beff7ac60095574d0fe6dc7305a09986cc75a78b/Formula/swiftlint.rb
+  command: /usr/local/bin/brew install https://github.com/Homebrew/homebrew-core/blob/44a3c592eab4d052ceaf0e3628edce5547938737/Formula/swiftlint.rb
 
 - name: Install xctool
   command: /usr/local/bin/brew install xctool
