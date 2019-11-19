@@ -1,7 +1,7 @@
 ---
 description: Travis CI Xcode VM Xcode 11.2.1
 variables:
-  name: xcode11.2
+  name: xcode11.2.1
   records_path: records/xcode11.2.1
   template_image_name: travis-ci-macos10.14.4-bare-large
   dirty_image_name: travis-ci-macos10.14-xcode11.2.1-{{ timestamp }}-dirty
