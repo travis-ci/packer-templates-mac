@@ -1,8 +1,8 @@
 ---
 description: Travis CI Xcode 9.4.1 Build VM
 variables:
-  name: xcode9.4.1
-  records_path: records/xcode9.4.1
+  name: xcode9.4.1-19
+  records_path: records/xcode9.4.1-19
   template_image_name: travis-ci-macos10.13-bare-large
   dirty_image_name: travis-ci-macos10.13-xcode9.4.1-19-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.13-xcode9.4.1-19-{{ timestamp }}
