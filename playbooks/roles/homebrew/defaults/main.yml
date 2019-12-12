@@ -14,6 +14,7 @@ homebrew_packages:
 - postgis
 - postgresql
 - pyenv
+- python@2
 - python
 - sqlite
 #- swiftlint
