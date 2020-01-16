@@ -20,8 +20,8 @@
 - name: Set ruby {{ default_ruby }} as the default ruby version
   command: "{{ rvm_binary }} alias create default {{ default_ruby }}"
 
-- name: Install Bundler 2.0.2
-  command: "{{ rvm_binary }} all do gem install bundler -v 2.0.2 --no-doc"
+- name: Install Bundler
+  command: "{{ rvm_binary }} all do gem install bundler --no-doc"
 
 - name: Install global RubyGems 
   command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc"
