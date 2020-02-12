@@ -28,12 +28,12 @@
   loop: "{{ global_rubygems }}"
 
 - name: Install xcode-install gem
-  command: "{{ rvm_binary }} 2.6.4 do gem install xcode-install --no-doc"
+  command: "{{ rvm_binary }} 2.7.0 do gem install xcode-install --no-doc"
 
 - name: Patch xcode-install 
   copy:
     src: install.rb
-    dest: /Users/travis/.rvm/gems/ruby-2.6.4/gems/xcode-install-2.6.4/lib/xcode/
+    dest: /Users/travis/.rvm/gems/ruby-2.7.0/gems/xcode-install-2.7.0/lib/xcode/
     mode: 0644
     owner: travis
 
