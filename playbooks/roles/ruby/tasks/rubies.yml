@@ -33,7 +33,7 @@
 - name: Patch xcode-install 
   copy:
     src: install.rb
-    dest: /Users/travis/.rvm/gems/ruby-2.7.0/gems/xcode-install-2.7.0/lib/xcode/
+    dest: /Users/travis/.rvm/gems/ruby-2.7.0/gems/xcode-install-2.6.2/lib/xcode/
     mode: 0644
     owner: travis
 
