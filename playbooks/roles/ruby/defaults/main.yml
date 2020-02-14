@@ -2,8 +2,8 @@ rvm_binary: /Users/travis/.rvm/bin/rvm
 rubies:
 - 2.7.0
 default_ruby: 2.7.0
-rvm_version: stable
-rvm_require_binaries: true
+rvm_version: master
+rvm_require_binaries: false
 global_rubygems:
 #- bundler
 - cocoapods
