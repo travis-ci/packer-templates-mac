@@ -52,27 +52,27 @@ vsphere-images move-image \
   "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/${VM_NAME}" \
   "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}"
 
-vsphere-images copy-image \
-  --src-url="$SOURCE_URL" \
-  --dest-url="$DESTINATION_URL" \
-  --src-insecure-skip-verify \
-  --dest-insecure-skip-verify \
-  --dest-datastore-path="/$DESTINATION_DATACENTER/datastore/$DESTINATION_DATASTORE" \
-  --dest-pool-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL" \
-  --dest-host-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL/$DESTINATION_HOST" \
-  --dest-network-name="/$DESTINATION_DATACENTER/network/$DESTINATION_NETWORK" \
-  "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}" \
-  "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}"
+# vsphere-images copy-image \
+#   --src-url="$SOURCE_URL" \
+#   --dest-url="$DESTINATION_URL" \
+#   --src-insecure-skip-verify \
+#   --dest-insecure-skip-verify \
+#   --dest-datastore-path="/$DESTINATION_DATACENTER/datastore/$DESTINATION_DATASTORE" \
+#   --dest-pool-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL" \
+#   --dest-host-path="/$DESTINATION_DATACENTER/host/$DESTINATION_POOL/$DESTINATION_HOST" \
+#   --dest-network-name="/$DESTINATION_DATACENTER/network/$DESTINATION_NETWORK" \
+#   "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}" \
+#   "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}"
 
 vsphere-images resnapshot \
   --vsphere-url="$SOURCE_URL" \
   --vsphere-insecure-skip-verify \
   "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/$NEW_VM_NAME"
 
-vsphere-images resnapshot \
-  --vsphere-url="$DESTINATION_URL" \
-  --vsphere-insecure-skip-verify \
-  "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/$NEW_VM_NAME"
+# vsphere-images resnapshot \
+#   --vsphere-url="$DESTINATION_URL" \
+#   --vsphere-insecure-skip-verify \
+#   "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/$NEW_VM_NAME"
 
 vsphere-images move-image \
   --vsphere-url="$SOURCE_URL" \
@@ -80,8 +80,8 @@ vsphere-images move-image \
   "/$SOURCE_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}" \
   "/$SOURCE_DATACENTER/vm/$FINAL_FOLDER/${NEW_VM_NAME}"
 
-vsphere-images move-image \
-  --vsphere-url="$DESTINATION_URL" \
-  --vsphere-insecure-skip-verify \
-  "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}" \
-  "/$DESTINATION_DATACENTER/vm/$FINAL_FOLDER/${NEW_VM_NAME}"
+# vsphere-images move-image \
+#   --vsphere-url="$DESTINATION_URL" \
+#   --vsphere-insecure-skip-verify \
+#   "/$DESTINATION_DATACENTER/vm/$IN_PROGRESS_FOLDER/${NEW_VM_NAME}" \
+#   "/$DESTINATION_DATACENTER/vm/$FINAL_FOLDER/${NEW_VM_NAME}"
