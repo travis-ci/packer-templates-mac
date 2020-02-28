@@ -11,3 +11,6 @@ export NVM_DIR="$HOME/.nvm"
 # help rvm work
 export PATH="$HOME/.rvm/bin:$PATH"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Disable Homebrew cleanup
+export HOMEBREW_NO_INSTALL_CLEANUP=1
