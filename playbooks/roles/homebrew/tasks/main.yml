@@ -4,12 +4,14 @@
 
 - name: Install Homebrew
   shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  when: homebrew_installed.stat.exists == false
+
+- name: Add more taps
   homebrew_tap:
     name:
     - homebrew/bundle
     - homebrew/cask
     - homebrew/services
-  when: homebrew_installed.stat.exists == false
 
 - name: Install Homebrew casks
   homebrew_cask:
