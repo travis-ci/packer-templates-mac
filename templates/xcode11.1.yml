@@ -1,11 +1,11 @@
 ---
 description: Travis CI Xcode VM Xcode 11.1 GM Seed Build 11A1027
 variables:
-  name: xcode11.1g
-  records_path: records/xcode11.1g
-  template_image_name: travis-ci-macos10.14.4-bare-large
-  dirty_image_name: travis-ci-macos10.14-xcode11.1g-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.14-xcode11.1g-{{ timestamp }}
+  name: xcode11.1
+  records_path: records/xcode11.1
+  template_image_name: travis-ci-macos10.14.6-bare-large
+  dirty_image_name: travis-ci-macos10.14-6-xcode11.1g-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.14-6-xcode11.1g-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
@@ -26,7 +26,7 @@ builders:
   insecure_connection: "{{ user `vcenter_insecure` }}"
   datacenter: "pod-1"
   host: "packer_image_dev"
-  datastore: "DataCore1_2"
+  datastore: "DataCore1_3"
   folder: "In Progress Base VMs"
   template: "{{ user `template_image_name` }}"
   vm_name: "{{ user `dirty_image_name` }}"
