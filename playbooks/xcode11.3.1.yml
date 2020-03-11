@@ -8,5 +8,5 @@
     - 12.14.1
     - 10.18.1
     - 8.17.0
-    rubies: [2.7.0]
-    default_ruby: 2.7.0
+    rubies: [2.6.4]
+    default_ruby: 2.6.4
