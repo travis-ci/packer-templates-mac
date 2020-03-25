@@ -6,9 +6,9 @@
   register: result
   until: result is succeeded
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.4"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.4:/Users/travis/.rvm/gems/ruby-2.6.4@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.4/bin/"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.5"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.5:/Users/travis/.rvm/gems/ruby-2.6.5@global"
+    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.5/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 

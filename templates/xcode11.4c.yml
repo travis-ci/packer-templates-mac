@@ -1,11 +1,11 @@
 ---
-description: Travis CI Xcode VM Xcode 11.4 Build 11E146
+description: Travis CI Xcode VM Xcode 11.4 beta
 variables:
   name: xcode11.4
   records_path: records/xcode11.4
-  template_image_name: travis-ci-macos10.14.6-bare-large
-  dirty_image_name: travis-ci-macos10.14.6-xcode11.4-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.14.6-xcode11.4-{{ timestamp }}
+  template_image_name: travis-ci-macos10.15.3-bare-large
+  dirty_image_name: travis-ci-macos10.15.3-xcode11.4-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.15.3-xcode11.4-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
@@ -26,7 +26,7 @@ builders:
   insecure_connection: "{{ user `vcenter_insecure` }}"
   datacenter: "pod-1"
   host: "packer_image_dev"
-  datastore: "DataCore1_3"
+  datastore: "DataCore1_1"
   folder: "In Progress Base VMs"
   template: "{{ user `template_image_name` }}"
   vm_name: "{{ user `dirty_image_name` }}"
