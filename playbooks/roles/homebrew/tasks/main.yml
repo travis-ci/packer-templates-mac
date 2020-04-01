@@ -21,26 +21,8 @@
   homebrew:
     name: "{{ homebrew_packages }}"
     update_homebrew: true
-    
-# - name: "Symlinking readline lib"
-#   file:
-#     state: link
-#     force: yes
-#     src: /usr/local/opt/readline/lib/libreadline.dylib
-#     dest: /usr/local/opt/readline/lib/libreadline.7.dylib
 
-# - name: "Symlinking gdbm lib"
-#   file:
-#     state: link
-#     force: yes
-#     src: /usr/local/opt/gdbm/lib/libgdbm.dylib
-#     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
-
-#- name: Gather installed versions of packages
-#  command: /usr/local/bin/brew ls --versions
-#  register: brew_versions
-#
-#- name: Write installed packages to file
-#  copy:
-#    content: "{{ brew_versions.stdout }}"
-#    dest: /tmp/brew_packages
+- name: Install Python 2
+  command: /usr/local/bin/brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/86a44a0a552c673a05f11018459c9f5faae3becc/Formula/python@2.rb
+  
+ 
