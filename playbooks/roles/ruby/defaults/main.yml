@@ -1,11 +1,10 @@
 rvm_binary: /Users/travis/.rvm/bin/rvm
 rubies:
-- 2.7.0
-default_ruby: 2.7.0
+- 2.6.6
+default_ruby: 2.6.6
 rvm_version: stable
 rvm_require_binaries: true
 global_rubygems:
-#- bundler
 - cocoapods
 - fastlane
 - nomad-cli

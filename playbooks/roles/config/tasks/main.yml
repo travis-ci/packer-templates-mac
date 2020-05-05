@@ -1,3 +1,6 @@
+- name: Change default shell to bash
+  import_tasks: bash.yml
+
 - name: Configure sudoers
   import_tasks: sudo.yml
 

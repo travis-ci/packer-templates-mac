@@ -1,26 +1,10 @@
-# - name: Install xcode-install gem
-#   gem:
-#     name: xcode-install
-#     include_doc: false
-#     user_install: false
-#     state: latest
-#     executable: /usr/bin/gem
-#   become: true
-
-  #- name: Apply patch to use codesign 
-  #  patch:
-  #    src: xcode_install_use_codesign_to_verify.diff
-  #    basedir: /Library/Ruby/Gems/2.3.0/gems/xcode-install-2.5.0
-  #    strip: 0
-  #  become: true
-
 - name: Install Xcode {{ xcode_version }}
   xcode:
     version: "{{ xcode_version }}"
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.5"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.5:/Users/travis/.rvm/gems/ruby-2.6.5@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.5/bin/"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
+    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 - name: state of Xcode
@@ -32,3 +16,6 @@
   command: /usr/bin/xcode-select -s /Applications/Xcode-beta.app/
   when: Xcode_stat.stat.exists
   become: true
+
+- name: Accept Xcode license
+  command: sudo xcodebuild -license accept
