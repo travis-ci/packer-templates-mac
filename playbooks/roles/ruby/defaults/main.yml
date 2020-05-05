@@ -3,7 +3,7 @@ rubies:
 - 2.6.6
 default_ruby: 2.6.6
 rvm_version: stable
-rvm_require_binaries: true
+rvm_require_binaries: false
 global_rubygems:
 - cocoapods
 - fastlane
