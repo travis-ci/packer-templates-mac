@@ -1,5 +1,5 @@
 ---
-description: Travis CI Xcode VM Xcode 11.5 Beta 2 (11N605f)
+description: Travis CI Xcode VM Xcode 11.5 GM (11E608c)
 variables:
   name: xcode11.5
   records_path: records/xcode11.5
