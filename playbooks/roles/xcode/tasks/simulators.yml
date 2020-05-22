@@ -1,5 +1,5 @@
 - name: Fix extensions
-  command: "rvm 2.6.6 do gem pristine --all"
+  command: "/Users/travis/.rvm/bin/rvm 2.6.6 do gem pristine --all"
 
 - name: Install all available simulator runtimes
   xcode_simulator:

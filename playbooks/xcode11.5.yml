@@ -11,4 +11,4 @@
     - 8.17.0
     rubies: [2.6.6]
     default_ruby: 2.6.6
-    rvm_version: 1.29.10
+    rvm_version: stable
