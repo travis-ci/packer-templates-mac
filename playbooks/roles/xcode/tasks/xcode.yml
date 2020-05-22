@@ -1,2 +1,2 @@
 - name: Debug
-  shell: sleep 2100 
+  shell: sleep 900 
