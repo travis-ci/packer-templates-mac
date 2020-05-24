@@ -1,5 +1,5 @@
-- name: Fix extensions
-  command: "/Users/travis/.rvm/bin/rvm all do gem pristine --all"
+# - name: Fix extensions
+#   command: "/Users/travis/.rvm/bin/rvm all do gem pristine --all"
 
 - name: Install all available simulator runtimes
   xcode_simulator:
@@ -9,9 +9,9 @@
   register: result
   until: result is succeeded
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.0"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.0:/Users/travis/.rvm/gems/ruby-2.7.0@global"
+    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.7.0/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 
