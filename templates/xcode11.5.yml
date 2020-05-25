@@ -3,7 +3,7 @@ description: Travis CI Xcode VM Xcode 11.5 GM (11E608c)
 variables:
   name: xcode11.5
   records_path: records/xcode11.5
-  template_image_name: newcatalina
+  template_image_name: catalinasmall
   dirty_image_name: travis-ci-macos10.15.4-xcode11.5-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.15.4-xcode11.5-{{ timestamp }}
 
@@ -63,7 +63,7 @@ provisioners:
   destination: "{{ user `records_path` }}/simulators"
 post-processors:
 - type: shell-local
-  environment_vars:
+  environment_vars: 
   - DIRTY_IMAGE_NAME={{ user `dirty_image_name` }}
   - FINAL_IMAGE_NAME={{ user `final_image_name` }}
   inline:
