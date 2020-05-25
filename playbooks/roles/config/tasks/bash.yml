@@ -1,6 +1,3 @@
 - name: Change default shell to bash
   command: chsh -s /bin/bash
   become: true
-
-- name: Change default shell to bash
-  command: chsh -s /bin/bash  
