@@ -17,8 +17,8 @@
   homebrew_cask:
     name: "{{ homebrew_casks }}"
 
-- name: Let Java run
-  shell: xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/openjdk-??.?.?.jdk
+#- name: Let Java run
+#  shell: xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/openjdk-??.?.?.jdk
 
 - name: Install Homebrew packages
   homebrew:
