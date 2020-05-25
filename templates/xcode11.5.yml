@@ -3,7 +3,7 @@ description: Travis CI Xcode VM Xcode 11.5 GM (11E608c)
 variables:
   name: xcode11.5
   records_path: records/xcode11.5
-  template_image_name: travis-ci-macos10.15.4-bare-large
+  template_image_name: newcatalina
   dirty_image_name: travis-ci-macos10.15.4-xcode11.5-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos10.15.4-xcode11.5-{{ timestamp }}
 
