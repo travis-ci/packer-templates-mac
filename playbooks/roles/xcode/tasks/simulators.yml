@@ -3,7 +3,7 @@
 
 - name: Install all available simulator runtimes
   xcode_simulator:
-    xcode: "{{ xcode_version }}"
+    xcode: "11.5"
   retries: 3
   delay: 3
   register: result
