@@ -1,11 +1,11 @@
 ---
 description: Travis CI Xcode VM Xcode 12.0 beta 2 (12A6163b)
 variables:
-  name: xcode12.0
-  records_path: records/xcode12.0
+  name: xcode12b2
+  records_path: records/xcode12b2
   template_image_name: travis-ci-macos10.15.5-bare-large
-  dirty_image_name: travis-ci-macos10.15.5-xcode12.0-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.15.5-xcode12.0-{{ timestamp }}
+  dirty_image_name: travis-ci-macos10.15.5-xcode12.0b2-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.15.5-xcode12.0b2-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"

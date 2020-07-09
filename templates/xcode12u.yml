@@ -1,5 +1,5 @@
 ---
-description: Travis CI Xcode VM Xcode (Universal) 12.0 (12A8158a)
+description: Travis CI Xcode VM Xcode (Universal) 12.0 (12A8161k)
 variables:
   name: xcode12u
   records_path: records/xcode12u
