@@ -4,8 +4,8 @@
   roles:
   - role: config
     tags: [config]
-  - role: ssh
-    tags: [ssh]
+  # - role: ssh
+  #   tags: [ssh]
   - role: homebrew
     tags: [homebrew]
   - role: ruby
