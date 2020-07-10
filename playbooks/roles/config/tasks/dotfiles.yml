@@ -18,6 +18,3 @@
     dest: /Users/travis/.bash_profile
     mode: 0644
     owner: travis
-
-- name: Reboot VM
-  reboot:
