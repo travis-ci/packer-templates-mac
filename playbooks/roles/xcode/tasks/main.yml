@@ -1,7 +1,2 @@
 - name: Install Xcode
   import_tasks: xcode.yml
-
-- name: Install Xcode simulator runtimes
-  import_tasks: simulators.yml
-  tags:
-  - simulators
