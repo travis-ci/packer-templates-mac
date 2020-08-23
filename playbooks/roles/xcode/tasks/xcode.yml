@@ -7,8 +7,8 @@
 #     PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
 #     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
 #     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
-- name: Install Xcode beta 5
-  shell: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '12 beta 5'
+- name: Install beta
+  shell: "/Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '12 beta 5'"
     environment:
       XCODE_INSTALL_USER: "{{ xcode_install_user }}"
       XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
