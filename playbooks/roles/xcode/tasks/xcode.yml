@@ -1,13 +1,18 @@
-- name: Install Xcode {{ xcode_version }}
-  xcode:
-    version: "{{ xcode_version }}"
-  environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
-    XCODE_INSTALL_USER: "{{ xcode_install_user }}"
-    XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
-    
+# - name: Install Xcode {{ xcode_version }}
+#   xcode:
+#     version: "{{ xcode_version }}"
+#   environment:
+#     GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
+#     GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
+#     PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
+#     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
+#     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
+- name: Install Xcode beta 5
+  shell: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '12 beta 5'
+    environment:
+      XCODE_INSTALL_USER: "{{ xcode_install_user }}"
+      XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
+
 - name: state of Xcode
   stat: path=/Users/travis/Downloads/Xcode-beta.app
   register: Xcode_stat
