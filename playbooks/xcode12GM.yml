@@ -4,7 +4,7 @@
     xcode_version: '12 GM seed'
     nvm_version: v0.35.3
     node_versions:
-    - 14.11.0    
+    - 14.11.0
     - 13.14.0
     - 12.18.4
     - 10.22.1
