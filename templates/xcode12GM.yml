@@ -1,0 +1,70 @@
+---
+description: Travis CI Xcode VM Xcode 12.0 GM Seed 1 (12A7208)
+variables:
+  name: xcode12gm
+  records_path: records/xcode12gm
+  template_image_name: travis-ci-macos10.15.6-bare-large
+  dirty_image_name: travis-ci-macos10.15.6-xcode12-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.15.6-xcode12-{{ timestamp }}
+
+  ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
+  vcenter_server: "{{ env `VCENTER_SERVER` }}"
+  vcenter_user: "{{ env `VCENTER_USER` }}"
+  vcenter_password: "{{ env `VCENTER_PASSWORD` }}"
+  vcenter_insecure: "{{ env `VCENTER_INSECURE` }}"
+  xcode_install_user: "{{ env `XCODE_INSTALL_USER` }}"
+  xcode_install_password: "{{ env `XCODE_INSTALL_PASSWORD` }}"
+builders:
+- type: vsphere-clone
+  name: vsphere
+  ssh_timeout: 10m
+  ssh_port: 22
+  ssh_username: travis
+  vcenter_server: "{{ user `vcenter_server` }}"
+  username: "{{ user `vcenter_user` }}"
+  password: "{{ user `vcenter_password` }}"
+  insecure_connection: "{{ user `vcenter_insecure` }}"
+  datacenter: "pod-1"
+  host: "packer_image_dev"
+  datastore: "DataCore1_2"
+  folder: "In Progress Base VMs"
+  template: "{{ user `template_image_name` }}"
+  vm_name: "{{ user `dirty_image_name` }}"
+  CPUs: 12             # will be changed later when finalized
+  CPU_reservation: 0
+  CPU_limit: 99999
+  RAM: 32768           # will be changed later when finalized
+  RAM_reservation: 0
+  ssh_password: "{{ user `ssh_password` }}"
+  shutdown_command: "sudo shutdown -h now"
+  shutdown_timeout: 5m
+  create_snapshot: true
+  convert_to_template: false
+provisioners:
+- type: shell
+  inline:
+  - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  - /usr/local/bin/brew install ansible
+- type: ansible-local
+  playbook_dir: playbooks
+  playbook_file: playbooks/{{ user `name` }}.yml
+  inventory_groups: builders
+  extra_arguments:
+  - -vvv
+  - --extra-vars "xcode_install_user={{ user `xcode_install_user` }} xcode_install_password={{ user `xcode_install_password` }}"
+  command: ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 /usr/local/bin/ansible-playbook
+- type: file
+  direction: download
+  source: /tmp/brew_packages
+  destination: "{{ user `records_path` }}/brew_packages"
+- type: file
+  direction: download
+  source: /tmp/simulators
+  destination: "{{ user `records_path` }}/simulators"
+post-processors:
+- type: shell-local
+  environment_vars: 
+  - DIRTY_IMAGE_NAME={{ user `dirty_image_name` }}
+  - FINAL_IMAGE_NAME={{ user `final_image_name` }}
+  inline:
+  - bin/finalize-image "$DIRTY_IMAGE_NAME" "$FINAL_IMAGE_NAME"
