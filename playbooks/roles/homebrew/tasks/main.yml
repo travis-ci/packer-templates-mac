@@ -17,14 +17,15 @@
   homebrew_cask:
     name: "{{ homebrew_casks }}"
 
-- name: Fetch Java cask
-  shell: /usr/local/bin/brew cask fetch https://raw.githubusercontent.com/waldyrious/homebrew-cask/6b41ff6776568cf2f929df3e2688dd5061f00c6a/Casks/java.rb
+- name: Copy java.rb cask
+  copy:
+    src: java.rb
+    dest: /Users/travis/java.rb
+    mode: 0644
+    owner: travis
 
-- name: Install Java cask
-  shell: /usr/local/bin/brew install cask https://raw.githubusercontent.com/waldyrious/homebrew-cask/6b41ff6776568cf2f929df3e2688dd5061f00c6a/Casks/java.rb
-
-#- name: Let Java run
-#  shell: xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/openjdk-??.?.?.jdk
+- name: Install Homebrew
+  shell: /usr/local/bin/brew cask install /Users/travis/java.rb
 
 - name: Install Homebrew packages
   homebrew:
