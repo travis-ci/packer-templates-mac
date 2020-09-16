@@ -21,5 +21,5 @@ homebrew_packages:
 - wget
 #- xctool
 homebrew_casks:
-- java
+# - java
 - xquartz

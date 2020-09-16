@@ -17,6 +17,12 @@
   homebrew_cask:
     name: "{{ homebrew_casks }}"
 
+- name: Fetch Java cask
+  shell: brew cask fetch https://raw.githubusercontent.com/waldyrious/homebrew-cask/6b41ff6776568cf2f929df3e2688dd5061f00c6a/Casks/java.rb
+
+- name: Install Java cask
+  shell: brew install cask https://raw.githubusercontent.com/waldyrious/homebrew-cask/6b41ff6776568cf2f929df3e2688dd5061f00c6a/Casks/java.rb
+
 #- name: Let Java run
 #  shell: xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/openjdk-??.?.?.jdk
 
