@@ -24,15 +24,20 @@
     mode: 0644
     owner: travis
 
-- name: Install Homebrew
+- name: Copy python2 Formula
+  copy:
+    src: python@2.rb
+    dest: /Users/travis/python@2.rb
+    mode: 0644
+    owner: travis
+
+- name: Install Java (cask)
   shell: /usr/local/bin/brew cask install /Users/travis/java.rb
+
+- name: Install Python 2 (homebrew)
+  shell: /usr/local/bin/brew install /Users/travis/python@2.rb
 
 - name: Install Homebrew packages
   homebrew:
     name: "{{ homebrew_packages }}"
     update_homebrew: true
-
-- name: Install Python 2
-  command: /usr/local/bin/brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/86a44a0a552c673a05f11018459c9f5faae3becc/Formula/python@2.rb
-  
- 
