@@ -3,9 +3,9 @@ description: Travis CI Xcode VM Xcode 12.2 beta (12B5018i)
 variables:
   name: xcode12.2
   records_path: records/xcode12.2
-  template_image_name: travis-ci-macos10.15.6-bare-large
-  dirty_image_name: travis-ci-macos10.15.6-xcode12.2-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.15.6-xcode12.2-{{ timestamp }}
+  template_image_name: travis-ci-macos10.15.7-bare-large
+  dirty_image_name: travis-ci-macos10.15.7-xcode12.2-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.15.7-xcode12.2-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
