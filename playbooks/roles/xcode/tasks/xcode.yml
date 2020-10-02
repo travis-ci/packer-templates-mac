@@ -26,5 +26,5 @@
   when: Xcode_stat.stat.exists
   become: true
 
-- name: Accept Xcode license
-  command: sudo xcodebuild -license accept
+# - name: Accept Xcode license
+#   command: sudo xcodebuild -license accept
