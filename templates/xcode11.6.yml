@@ -3,9 +3,9 @@ description: Travis CI Xcode VM Xcode 11.6 GM (11E708)
 variables:
   name: xcode11.6
   records_path: records/xcode11.6
-  template_image_name: travis-ci-macos10.15.5-bare-large
-  dirty_image_name: travis-ci-macos10.15.5-xcode11.6-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos10.15.5-xcode11.6-{{ timestamp }}
+  template_image_name: travis-ci-macos10.15.7-bare-large
+  dirty_image_name: travis-ci-macos10.15.7-xcode11.6-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos10.15.7-xcode11.6-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
