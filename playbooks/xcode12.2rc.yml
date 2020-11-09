@@ -1,0 +1,15 @@
+---
+- import_playbook: site.yml
+  vars:
+    xcode_version: '12.2 Release Candidate'
+    nvm_version: v0.37.0
+    node_versions:
+    - 15.1.0    
+    - 14.15.0    
+    - 13.14.0
+    - 12.19.0
+    - 10.23.0
+    - 8.17.0
+    rubies: [2.6.6]
+    default_ruby: 2.6.6
+    rvm_version: stable
