@@ -1,5 +1,5 @@
 ---
-description: Travis CI Xcode VM Xcode 12.2 RC 1 (12B5044c)
+description: Travis CI Xcode VM Xcode 12.2 RC (12B45b)
 variables:
   name: xcode12.2rc
   records_path: records/xcode12.2rc
