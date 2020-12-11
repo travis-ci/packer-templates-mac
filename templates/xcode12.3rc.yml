@@ -4,8 +4,8 @@ variables:
   name: xcode12.3rc
   records_path: records/xcode12.3rc
   template_image_name: travis-ci-macos11.0.1-bare-large
-  dirty_image_name: travis-ci-macos11.0.1-bare-large-xcode12.3rc-{{ timestamp }}-dirty
-  final_image_name: travis-ci-macos11.0.1-bare-large-xcode12.3rc-{{ timestamp }}
+  dirty_image_name: travis-ci-macos11.0.1-xcode12.3rc-{{ timestamp }}-dirty
+  final_image_name: travis-ci-macos11.0.1-xcode12.3rc-{{ timestamp }}
 
   ssh_password: "{{ env `TRAVIS_PACKER_SSH_PASSWORD` }}"
   vcenter_server: "{{ env `VCENTER_SERVER` }}"
