@@ -22,4 +22,4 @@ homebrew_packages:
 #- xctool
 homebrew_casks:
 # - java
-- xquartz
+# - xquartz
