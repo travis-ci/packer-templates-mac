@@ -13,9 +13,9 @@
     - homebrew/cask
     - homebrew/services
 
-- name: Install Homebrew casks
-  homebrew_cask:
-    name: "{{ homebrew_casks }}"
+# - name: Install Homebrew casks
+#   homebrew_cask:
+#     name: "{{ homebrew_casks }}"
 
 - name: Copy java.rb cask
   copy:
