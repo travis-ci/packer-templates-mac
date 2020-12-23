@@ -1,6 +1,6 @@
 cask "java" do
-  version "14.0.2,12:205943a0976c4ed48cb16f1043c5c647"
-  sha256 "386a96eeef63bf94b450809d69ceaa1c9e32a97230e0a120c1b41786b743ae84"
+  version "15.0.1,9:51f4f36ad4ef43e39d0dfdbaf6549e32"
+  sha256 "aad54ae4766d82ebd0de5189e71bdc6cd7336f0d62fda5eba24f2072a6de34d0"
 
   url "https://download.java.net/java/GA/jdk#{version.before_comma}/#{version.after_colon}/#{version.after_comma.before_colon}/GPL/openjdk-#{version.before_comma}_osx-x64_bin.tar.gz"
   name "OpenJDK"
@@ -9,3 +9,4 @@ cask "java" do
 
   artifact "jdk-#{version.before_comma}.jdk", target: "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk"
 end
+
