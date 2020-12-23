@@ -39,7 +39,7 @@ elif [[ $DESTINATION_POD == *2* ]]; then
   DESTINATION_POOL="MacPro_Pod_2"
   DESTINATION_HOST="10.88.242.51"
   DESTINATION_NETWORK="Jobs-2"
-  DATASTORE="DataCore1_3"
+  DATASTORE="DataCore1_4"
 else
   echo "error: Invalid destination pod '$DESTINATION_POD'. Valid options: pod-1, pod-2." >&2
   exit 1
