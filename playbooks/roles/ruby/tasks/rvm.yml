@@ -42,3 +42,10 @@
     dest: /Users/travis/.rvm/user/db
     mode: 0644
     owner: travis
+
+- name: Disable binary validation 
+  copy:
+    src: mount
+    dest: /Users/travis/.rvm/scripts/mount
+    mode: 0644
+    owner: travis
