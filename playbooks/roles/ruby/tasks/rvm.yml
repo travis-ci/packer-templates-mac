@@ -47,5 +47,5 @@
   copy:
     src: mount
     dest: /Users/travis/.rvm/scripts/mount
-    mode: 0644
+    mode: 0755
     owner: travis
