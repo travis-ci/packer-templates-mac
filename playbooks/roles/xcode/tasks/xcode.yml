@@ -14,7 +14,8 @@
     GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
     PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
-    XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"  
+    XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
+    SPACESHIP_SKIP_2FA_UPGRADE: 1
 
 - name: state of Xcode
   stat: path=/Users/travis/Downloads/Xcode-beta.app

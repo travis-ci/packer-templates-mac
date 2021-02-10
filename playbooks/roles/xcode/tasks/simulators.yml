@@ -14,6 +14,7 @@
     PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
+    SPACESHIP_SKIP_2FA_UPGRADE: 1
 
 - name: Gather installed simulators
   command: xcrun simctl list
