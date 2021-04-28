@@ -7,6 +7,7 @@ homebrew_packages:
 - go
 - gpg
 - gpg2
+- openjdk
 - maven
 - md5deep
 - mercurial

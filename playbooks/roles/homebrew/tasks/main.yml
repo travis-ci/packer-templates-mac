@@ -17,12 +17,12 @@
 #   homebrew_cask:
 #     name: "{{ homebrew_casks }}"
 
-- name: Copy java.rb cask
-  copy:
-    src: java.rb
-    dest: /Users/travis/java.rb
-    mode: 0644
-    owner: travis
+# - name: Copy java.rb cask
+#   copy:
+#     src: java.rb
+#     dest: /Users/travis/java.rb
+#     mode: 0644
+#     owner: travis
 
 - name: Copy python2 Formula
   copy:
@@ -31,8 +31,8 @@
     mode: 0644
     owner: travis
 
-- name: Install Java (cask)
-  shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
+# - name: Install Java (cask)
+#   shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
 
 - name: Install Xquartz (cask)
   shell: /usr/local/bin/brew install --cask xquartz 
