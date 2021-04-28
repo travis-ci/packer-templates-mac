@@ -24,12 +24,15 @@
 #     mode: 0644
 #     owner: travis
 
-- name: Copy python2 Formula
+- name: Copy pip install files
   copy:
-    src: python@2.rb
-    dest: /Users/travis/python@2.rb
+    src: get-pip.py
+    dest: /Users/travis/get-pip.py
     mode: 0644
     owner: travis
+
+- name: Install pip for Python 2
+  command: python /Users/travis/get-pip.py
 
 # - name: Install Java (cask)
 #   shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
@@ -37,8 +40,8 @@
 - name: Install Xquartz (cask)
   shell: /usr/local/bin/brew install --cask xquartz 
 
-- name: Install Python 2 (homebrew)
-  shell: /usr/local/bin/brew install /Users/travis/python@2.rb
+# - name: Install Python 2 (homebrew)
+#   shell: /usr/local/bin/brew install /Users/travis/python@2.rb
 
 - name: Install Homebrew packages
   homebrew:
