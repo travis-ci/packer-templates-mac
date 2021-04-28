@@ -1,15 +1,18 @@
+# typed: false
+# frozen_string_literal: true
+
 class PythonAT2 < Formula
   desc "Interpreted, interactive, object-oriented programming language"
   homepage "https://www.python.org/"
   url "https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz"
   sha256 "4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41"
   revision 1
-  head "https://github.com/python/cpython.git", :branch => "2.7"
+  head "https://github.com/python/cpython.git", branch: "2.7"
 
   bottle do
-    sha256 "accfaa922708f00afb69ab230199f96e6ecdddd248a1eca586ce1e5e5cfd732b" => :catalina
-    sha256 "54d3351d6be8268b2f5017894dcc8e083811dfa3812bdb9f79f989873b9a4542" => :mojave
-    sha256 "cfd5c6eeac37065d19f527bb0798a9caf1928bab3340cd545224861a3c82f219" => :high_sierra
+    sha256 catalina:    "accfaa922708f00afb69ab230199f96e6ecdddd248a1eca586ce1e5e5cfd732b"
+    sha256 mojave:      "54d3351d6be8268b2f5017894dcc8e083811dfa3812bdb9f79f989873b9a4542"
+    sha256 high_sierra: "cfd5c6eeac37065d19f527bb0798a9caf1928bab3340cd545224861a3c82f219"
   end
 
   # setuptools remembers the build flags python is built with and uses them to
@@ -145,7 +148,7 @@ class PythonAT2 < Formula
     # https://bugs.python.org/issue3588
     inreplace lib_cellar/"config/Makefile" do |s|
       s.change_make_var! "LINKFORSHARED",
-        "-u _PyMac_Error $(PYTHONFRAMEWORKINSTALLDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)"
+                         "-u _PyMac_Error $(PYTHONFRAMEWORKINSTALLDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)"
     end
 
     # Prevent third-party packages from building against fragile Cellar paths
@@ -288,18 +291,19 @@ class PythonAT2 < Formula
     EOS
   end
 
-  def caveats; <<~EOS
-    Pip and setuptools have been installed. To update them
-      pip install --upgrade pip setuptools
+  def caveats
+    <<~EOS
+      Pip and setuptools have been installed. To update them
+        pip install --upgrade pip setuptools
 
-    You can install Python packages with
-      pip install <package>
+      You can install Python packages with
+        pip install <package>
 
-    They will install into the site-package directory
-      #{site_packages}
+      They will install into the site-package directory
+        #{site_packages}
 
-    See: https://docs.brew.sh/Homebrew-and-Python
-  EOS
+      See: https://docs.brew.sh/Homebrew-and-Python
+    EOS
   end
 
   test do
