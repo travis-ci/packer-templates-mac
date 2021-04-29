@@ -11,6 +11,6 @@
     - 12.22.1
     - 11.12.0
     - 10.24.1
-    rubies: [2.6.7]
-    default_ruby: 2.6.7
+    rubies: [2.6.6]
+    default_ruby: 2.6.6
     rvm_version: stable
