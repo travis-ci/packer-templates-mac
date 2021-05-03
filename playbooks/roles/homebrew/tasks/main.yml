@@ -17,12 +17,12 @@
 #   homebrew_cask:
 #     name: "{{ homebrew_casks }}"
 
-# - name: Copy java.rb cask
-#   copy:
-#     src: java.rb
-#     dest: /Users/travis/java.rb
-#     mode: 0644
-#     owner: travis
+- name: Copy java.rb cask
+  copy:
+    src: java.rb
+    dest: /Users/travis/java.rb
+    mode: 0644
+    owner: travis
 
 - name: Copy pip install files
   copy:
@@ -34,8 +34,8 @@
 - name: Install pip for Python 2
   command: python /Users/travis/get-pip.py
 
-# - name: Install Java (cask)
-#   shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
+- name: Install Java (cask)
+  shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
 
 - name: Install Xquartz (cask)
   shell: /usr/local/bin/brew install --cask xquartz 
