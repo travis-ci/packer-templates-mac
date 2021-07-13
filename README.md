@@ -20,6 +20,7 @@ To support this workflow, instead of running your Packer builds with `rake`, use
 
 You can think of the `bin/build-image` script as a version of `rake` that runs remotely on the image builder.
 
+
 ## Provisioning
 
 We use [Ansible](https://ansible.com) to provision the macOS images. This makes it easier to maintain a common set of provisioning scripts that can be reused across various images. The idempotency provided by a tool like Ansible also makes it easier for us to iterate on changes in our provisioning by not requiring a blank slate for every change.
