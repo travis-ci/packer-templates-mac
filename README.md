@@ -47,7 +47,7 @@ The common `site.yml` playbook is imported the the playbooks for each image and 
 
   Each role also has a matching tag associated with it so that it's possible to limit which tasks run when running Ansible manually.
 
-  Each role should have a `README.md` inside its corresponding directory in `playbooks/roles/` that explains what it does in more detail.
+  Each role should have a `README.md` inside its corresponding directory in `playbooks/roles/` that explains what it does in more detail....
 
 
  
