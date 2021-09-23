@@ -3,15 +3,15 @@
 
 - name: Install all available simulator runtimes
   xcode_simulator:
-    xcode: "12.5.1"
+    xcode: "13"
   retries: 4
   delay: 4
   register: result
   until: result is succeeded
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.7"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.7:/Users/travis/.rvm/gems/ruby-2.6.7@global"
+    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.7/bin/"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
     SPACESHIP_SKIP_2FA_UPGRADE: 1
