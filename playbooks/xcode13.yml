@@ -13,4 +13,4 @@
     - 10.24.1
     rubies: [2.6.7]
     default_ruby: 2.6.7
-    rvm_version: stable
+    rvm_version: head
