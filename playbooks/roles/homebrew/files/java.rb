@@ -1,6 +1,6 @@
 cask "java" do
   version "17,35:0d483333a00540d886896bac774ff48b"
-  sha256 "6098f839954439d4916444757c542c1b8778a32461706812d41cc8bbefce7f2f"
+  sha256 "18e11cf9bbc6f584031e801b11ae05a233c32086f8e1b84eb8a1e9bb8e1f5d90"
 
   url "https://download.java.net/java/GA/jdk#{version.before_comma}/#{version.after_colon}/#{version.after_comma.before_colon}/GPL/openjdk-#{version.before_comma}_macos-x64_bin.tar.gz"
   name "OpenJDK"
