@@ -3,7 +3,7 @@
 
 - name: Install all available simulator runtimes
   xcode_simulator:
-    xcode: "13"
+    xcode: "13.0"
   retries: 4
   delay: 4
   register: result
