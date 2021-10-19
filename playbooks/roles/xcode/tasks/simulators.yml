@@ -3,9 +3,9 @@
 
 - name: Install all available simulator runtimes
   xcode_simulator:
-    xcode: "13.0"
-  retries: 4
-  delay: 4
+    xcode: "13.1 Release Candidate"
+  retries: 6
+  delay: 10
   register: result
   until: result is succeeded
   environment:
