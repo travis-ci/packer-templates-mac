@@ -71,7 +71,7 @@ def install_simulator(module, xcversion_path, simulator):
 
     # Remove the installer files as they take up a lot of disk space
     cache_dir = os.path.expanduser('~/Library/Caches/XcodeInstall')
-    files_to_remove = glob.glob(os.path.join(cache_dir, '*.pkg')) + glob.glob(os.path.join(cache_dir, '*.dmg')) + glob.glob(os.path.join(cache_dir, '*.progress'))
+    files_to_remove = glob.glob(os.path.join(cache_dir, '*.pkg')) + glob.glob(os.path.join(cache_dir, '*.dmg'))
     for f in files_to_remove:
         os.remove(f)
 
