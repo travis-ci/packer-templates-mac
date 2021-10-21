@@ -1,0 +1,12 @@
+- name: Install Simulators
+  command: "{{ xcversion_bin }} simulators --install={{ item }} --force"
+  loop: "{{ sims_to_install }}"
+
+- name: Gather installed simulators
+  command: xcrun simctl list
+  register: simctl_list
+
+- name: Write available simulators to file
+  copy:
+    content: "{{ simctl_list.stdout }}"
+    dest: /tmp/simulators
