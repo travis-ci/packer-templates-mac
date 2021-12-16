@@ -1,18 +1,18 @@
 system_gem_dir: /Library/Ruby/Gems/2.3.0
 xcversion_bin: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion
 sims_to_install:
-- 'iOS 14.0'
 - 'iOS 14.1'
 - 'iOS 14.2'
 - 'iOS 14.3'
 - 'iOS 14.4'
 - 'iOS 14.5'
-- 'tvOS 14.0'
+- 'iOS 15.0'
 - 'tvOS 14.2'
 - 'tvOS 14.3'
 - 'tvOS 14.4'
 - 'tvOS 14.5'
-- 'watchOS 7.0'
+- 'tvOS 15.0'
 - 'watchOS 7.1'
 - 'watchOS 7.2'
 - 'watchOS 7.4'
+- 'watchOS 8.0'
