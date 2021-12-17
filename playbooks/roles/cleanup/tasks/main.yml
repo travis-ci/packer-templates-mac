@@ -14,6 +14,5 @@
   - .bash_sessions
 
 - name: Empty trash
-  file:
-    state: absent
-    path: /Users/travis/.Trash
+  command: rm -rf /Users/travis/.Trash/*
+  become: true
