@@ -8,7 +8,7 @@
 #     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
 #     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 - name: Install beta
-  shell: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '13.2'
+  shell: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '13.2.1'
   environment:
     GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
     GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
