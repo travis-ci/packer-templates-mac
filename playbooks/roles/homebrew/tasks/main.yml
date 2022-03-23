@@ -24,15 +24,15 @@
     mode: 0644
     owner: travis
 
-- name: Copy pip install files
-  copy:
-    src: get-pip.py
-    dest: /Users/travis/get-pip.py
-    mode: 0644
-    owner: travis
+# - name: Copy pip install files
+#   copy:
+#     src: get-pip.py
+#     dest: /Users/travis/get-pip.py
+#     mode: 0644
+#     owner: travis
 
-- name: Install pip for Python 2
-  command: python /Users/travis/get-pip.py
+# - name: Install pip for Python 2
+#   command: python /Users/travis/get-pip.py
 
 - name: Install Java (cask)
   shell: /usr/local/bin/brew install --cask /Users/travis/java.rb
