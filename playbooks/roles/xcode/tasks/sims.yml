@@ -2,10 +2,10 @@
   shell: "{{ xcversion_bin }} simulators --install='{{ item }}' --force"
   loop: "{{ sims_to_install }}"
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.6"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.6:/Users/travis/.rvm/gems/ruby-2.7.6@global"
     # PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
-    PATH: "/Users/travis/.rvm/gems/ruby-2.6.6/bin:/Users/travis/.rvm/gems/ruby-2.6.6@global/bin:/Users/travis/.rvm/rubies/ruby-2.6.6/bin:/Users/travis/.rvm/bin:{{ ansible_env.PATH }}"
+    PATH: "/Users/travis/.rvm/gems/ruby-2.7.6/bin:/Users/travis/.rvm/gems/ruby-2.7.6@global/bin:/Users/travis/.rvm/rubies/ruby-2.7.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/travis/.rvm/bin"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
     SPACESHIP_SKIP_2FA_UPGRADE: 1 

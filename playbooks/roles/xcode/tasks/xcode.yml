@@ -7,25 +7,32 @@
 #     PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
 #     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
 #     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
-- name: Install beta
-  shell: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion install '13.4.1'
+- name: Install Xcode
+  shell: /Users/travis/.rvm/gems/ruby-2.7.6/bin/xcversion install '13.4.1'
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.6.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.6.6:/Users/travis/.rvm/gems/ruby-2.6.6@global"
-    PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.6"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.6:/Users/travis/.rvm/gems/ruby-2.7.6@global"
+    # PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
+    PATH: "/Users/travis/.rvm/gems/ruby-2.7.6/bin:/Users/travis/.rvm/gems/ruby-2.7.6@global/bin:/Users/travis/.rvm/rubies/ruby-2.7.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/travis/.rvm/bin"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
     SPACESHIP_SKIP_2FA_UPGRADE: 1
 
-- name: state of Xcode
-  stat: path=/Users/travis/Downloads/Xcode-beta.app
-  register: Xcode_stat
+- name: Check install
+  shell: xcodebuild -version
 
-- name: Move Xcode to Application
-  command: creates="/Applications/Xcoxode-beta.app" mv /Users/travis/Downloads/Xcode-beta.app/ /Applications/Xcode-beta.app/
-  command: /usr/bin/xcode-select -s /Applications/Xcode-beta.app/
-  when: Xcode_stat.stat.exists
-  become: true
+- name: Check sdks
+  shell: xcodebuild -showsdks
+
+# - name: state of Xcode
+#   stat: path=/Users/travis/Downloads/Xcode-beta.app
+#   register: Xcode_stat
+
+# - name: Move Xcode to Application
+#   command: creates="/Applications/Xcoxode-beta.app" mv /Users/travis/Downloads/Xcode-beta.app/ /Applications/Xcode-beta.app/
+#   command: /usr/bin/xcode-select -s /Applications/Xcode-beta.app/
+#   when: Xcode_stat.stat.exists
+#   become: true
 
 - name: Accept Xcode license
   command: sudo xcodebuild -license accept

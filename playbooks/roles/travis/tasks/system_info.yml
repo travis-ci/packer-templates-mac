@@ -13,12 +13,12 @@
 
 - name: Install system-info dependencies
   command: >
-    /Users/travis/.rvm/bin/rvm 2.6.6 do
+    /Users/travis/.rvm/bin/rvm 2.7.6 do
     bundle install --gemfile=/Users/travis/system-info/Gemfile
 
 - name: Create system-info report
   command: >
-    /Users/travis/.rvm/bin/rvm 2.6.6 do
+    /Users/travis/.rvm/bin/rvm 2.7.6 do
     bundle exec /Users/travis/system-info/exe/system-info report
     --formats human,json
     --human-output /usr/local/travis/system_info
