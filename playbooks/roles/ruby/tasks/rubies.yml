@@ -1,15 +1,15 @@
-# - name: "Workaround: Symlink libgdbm.dylib to make Ruby binaries happy"
-#   file:
-#     state: link
-#     src: /usr/local/opt/gdbm/lib/libgdbm.dylib
-#     dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
+- name: "Workaround: Symlink libgdbm.dylib to make Ruby binaries happy"
+  file:
+    state: link
+    src: /usr/local/opt/gdbm/lib/libgdbm.dylib
+    dest: /usr/local/opt/gdbm/lib/libgdbm.5.dylib
 
-# - name: "Symlinking readline lib"
-#   file:
-#     state: link
-#     force: yes
-#     src: /usr/local/opt/readline/lib/libreadline.dylib
-#     dest: /usr/local/opt/readline/lib/libreadline.7.dylib    
+- name: "Symlinking readline lib"
+  file:
+    state: link
+    force: yes
+    src: /usr/local/opt/readline/lib/libreadline.dylib
+    dest: /usr/local/opt/readline/lib/libreadline.7.dylib    
 
 - name: Install rubies
   command: "{{ rvm_binary }} install {{ item }} {{ '--binary' if rvm_require_binaries else '' }}"
