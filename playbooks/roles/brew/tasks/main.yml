@@ -1,8 +1,8 @@
 - name: Install swiftlint
   command: /usr/local/bin/brew install swiftlint
   
-- name: Install xctool
-  command: /usr/local/bin/brew install xctool
+# - name: Install xctool
+#   command: /usr/local/bin/brew install xctool
 
 - name: Gather installed versions of packages
   command: /usr/local/bin/brew ls --versions

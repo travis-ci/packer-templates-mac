@@ -20,7 +20,6 @@ homebrew_packages:
 #- swiftlint
 - tmate
 - wget
-#- xctool
 homebrew_casks:
 # - java
 # - xquartz
