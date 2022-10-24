@@ -1,5 +1,5 @@
 system_gem_dir: /Library/Ruby/Gems/2.3.0
-xcversion_bin: /Users/travis/.rvm/gems/ruby-2.6.6/bin/xcversion
+xcversion_bin: /Users/travis/.rvm/gems/ruby-2.7.6/bin/xcversion
 sims_to_install:
 - 'iOS 16.0'
 - 'iOS 15.4'
