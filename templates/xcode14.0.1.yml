@@ -1,8 +1,8 @@
 ---
 description: Travis CI Xcode VM Xcode 14.0.1 (14A400)
 variables:
-  name: xcode14.0
-  records_path: records/xcode14.0
+  name: xcode14.0.1
+  records_path: records/xcode14.0.1
   template_image_name: travis-ci-macos12.6-bare-large
   dirty_image_name: travis-ci-macos12.6-xcode14.0.1-{{ timestamp }}-dirty
   final_image_name: travis-ci-macos12.6-xcode14.0.1-{{ timestamp }}
