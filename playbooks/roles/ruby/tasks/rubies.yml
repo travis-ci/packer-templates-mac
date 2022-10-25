@@ -27,8 +27,14 @@
   command: "{{ rvm_binary }} all do gem install {{ item }} --no-doc"
   loop: "{{ global_rubygems }}"
 
-- name: Install xcode-install gem
-  command: "{{ rvm_binary }} all do gem install xcode-install --no-doc"
+# - name: Install xcode-install gem
+#   command: "{{ rvm_binary }} all do gem install xcode-install --no-doc"
+
+- name: Install specific_install gem
+  command: "{{ rvm_binary }} all do gem install specific_install --no-doc"
+
+- name: Install xcode-install from fork (fixes issues w simulators)
+  command: "{{ rvm_binary }} all do gem specific_install -l https://github.com/mzsanford/xcode-install.git -b xcode14"
 
 # - name: Patch xcode-install 
 #   copy:
