@@ -1,0 +1,14 @@
+- name: Copy debug script
+  copy:
+    src: debug.sh
+    dest: /tmp/debug.sh
+    mode: 0755
+
+
+- name: Run debug script
+  shell: "/tmp/debug.sh"
+  args:
+    executable: /bin/bash
+
+
+    
