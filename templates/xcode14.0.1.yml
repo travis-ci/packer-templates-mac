@@ -61,10 +61,10 @@ provisioners:
   direction: download
   source: /tmp/brew_packages
   destination: "{{ user `records_path` }}/brew_packages"
-- type: file
-  direction: download
-  source: /tmp/simulators
-  destination: "{{ user `records_path` }}/simulators"
+# - type: file
+#   direction: download
+#   source: /tmp/simulators
+#   destination: "{{ user `records_path` }}/simulators"
 post-processors:
 - type: shell-local
   environment_vars: 
