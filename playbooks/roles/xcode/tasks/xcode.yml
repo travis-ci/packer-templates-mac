@@ -8,12 +8,12 @@
 #     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
 #     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 - name: Install Xcode
-  shell: /Users/travis/.rvm/gems/ruby-2.7.6/bin/xcversion install '14.2'
+  shell: /Users/travis/.rvm/gems/ruby-2.7.7/bin/xcversion install '14.2'
   environment:
-    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.6"
-    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.6:/Users/travis/.rvm/gems/ruby-2.7.6@global"
+    GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.7"
+    GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.7:/Users/travis/.rvm/gems/ruby-2.7.7@global"
     # PATH: "{{ ansible_env.PATH }}:/Users/travis/.rvm/gems/ruby-2.6.6/bin/"
-    PATH: "/Users/travis/.rvm/gems/ruby-2.7.6/bin:/Users/travis/.rvm/gems/ruby-2.7.6@global/bin:/Users/travis/.rvm/rubies/ruby-2.7.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/travis/.rvm/bin"
+    PATH: "/Users/travis/.rvm/gems/ruby-2.7.7/bin:/Users/travis/.rvm/gems/ruby-2.7.7@global/bin:/Users/travis/.rvm/rubies/ruby-2.7.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/travis/.rvm/bin"
     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
     SPACESHIP_SKIP_2FA_UPGRADE: 1
