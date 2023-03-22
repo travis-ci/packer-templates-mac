@@ -8,7 +8,7 @@
 #     XCODE_INSTALL_USER: "{{ xcode_install_user }}"
 #     XCODE_INSTALL_PASSWORD: "{{ xcode_install_password }}"
 - name: Install Xcode
-  shell: /Users/travis/.rvm/gems/ruby-2.7.7/bin/xcversion install '14.2'
+  shell: /Users/travis/.rvm/gems/ruby-2.7.7/bin/xcversion install '14.3'
   environment:
     GEM_HOME: "/Users/travis/.rvm/gems/ruby-2.7.7"
     GEM_PATH: "/Users/travis/.rvm/gems/ruby-2.7.7:/Users/travis/.rvm/gems/ruby-2.7.7@global"
