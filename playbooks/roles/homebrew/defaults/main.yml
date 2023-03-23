@@ -13,7 +13,7 @@ homebrew_packages:
 - mercurial
 - node
 - postgis
-- postgresql
+- postgresql@12
 - pyenv
 - python
 - sqlite
